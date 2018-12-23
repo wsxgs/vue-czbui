@@ -1,0 +1,52 @@
+{
+  "name": "vue-czbui",
+  "description": "A mobile components Library with Vue2.js.",
+  "version": "1.4.1",
+  "author": "wangzhiqiang",
+  "main": "dist/czbui.js",
+  "style": "dist/czbui.css",
+  "keywords": [
+    "czbui"
+  ],
+  "files": [
+    "dist"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "scripts": {
+    "dev": "webpack-dev-server --content-base example/ --port 4321 --inline --hot --host 0.0.0.0 --config build/webpack.dev.conf.js",
+    "build:px:components": "webpack --config build/webpack.dist.components.px.conf.js",
+    "build:prod": "webpack --config build/webpack.dist.prod.conf.js",
+    "build": "npm run build:px:components && npm run build:prod"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.6.1",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.10.1",
+    "json-loader": "^0.5.4",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "postcss": "^5.2.14",
+    "string-replace-webpack-plugin": "^0.1.3",
+    "style-loader": "^0.13.1",
+    "vue": "^2.5.2",
+    "vue-loader": "^10.0.2",
+    "vue-resource": "^1.0.3",
+    "vue-router": "^2.1.1",
+    "vue-template-compiler": "^2.5.2",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "1.16.3",
+    "webpack-merge": "^2.4.0"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "url-loader": "^1.1.1"
+  }
+}
