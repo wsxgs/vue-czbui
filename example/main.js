@@ -13,7 +13,11 @@ import CheckBox from './pages/CheckBox.vue';
 
 import App from './app.vue';
 
+// czbui
 import './../src/czbui.js'
+
+// import czbui from 'vue-czbui'
+// import 'vue-czbui/dist/czbui.css'
 
 Vue.use(VueRouter);
 Vue.use(Resource);
