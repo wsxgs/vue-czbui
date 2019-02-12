@@ -394,7 +394,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .slider {
   width: 100%;
   overflow: hidden;

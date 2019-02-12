@@ -54,7 +54,7 @@ export default {
 }
 
 </script>
-<style lang='' scoped>
+<style lang='less' scoped>
 .weui-navbar {
   height: 50px;
   overflow: hidden;

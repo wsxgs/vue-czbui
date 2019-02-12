@@ -53,7 +53,8 @@ export default {
 }
 
 </script>
-<style lang='' scoped>
+
+<style lang='less' scoped>
 .weui-icon-checked:before {
   content: '\EA01';
   color: #c9c9c9;

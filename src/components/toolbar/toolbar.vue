@@ -51,7 +51,7 @@ export default {
 }
 
 </script>
-<style lang='' scoped>
+<style lang='less' scoped>
 .toolbar-wrap{
   height: 46px;
 }
