@@ -15,15 +15,15 @@
         </div>
         <div class="weui-cell__ft"></div>
       </router-link>
-      <router-link class="weui-cell weui-cell_access" to="/tab">
-        <div class="weui-cell__bd">
-          <p>tab切换</p>
-        </div>
-        <div class="weui-cell__ft"></div>
-      </router-link>
       <router-link class="weui-cell weui-cell_access" to="/dialog">
         <div class="weui-cell__bd">
           <p>操作反馈</p>
+        </div>
+        <div class="weui-cell__ft"></div>
+      </router-link>
+      <router-link class="weui-cell weui-cell_access" to="/tab">
+        <div class="weui-cell__bd">
+          <p>tab切换</p>
         </div>
         <div class="weui-cell__ft"></div>
       </router-link>
