@@ -12,6 +12,6 @@ module.exports = merge(distCommonWebpackConfig, {
     '/components/switch/index': './src/components/switch/index.js',
     '/components/checkbox/index': './src/components/checkbox/index.js',
     '/components/toolbar/index': './src/components/toolbar/index.js',
-    common: './static/css/weui.min.less'
+    common: './src/style/weui.min.less'
   }
 })

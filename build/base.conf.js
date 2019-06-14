@@ -16,40 +16,6 @@ module.exports = {
         }
       },
       {
-        test: /\.less$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 2 } },
-          'postcss-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                path: 'postcss.config.js' // 根目录创建此文件
-              }
-            }
-          },
-          {
-            loader: 'less-loader' // compiles Less to CSS
-          }
-        ]
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 2 } },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                path: 'postcss.config.js' // 根目录创建此文件
-              }
-            }
-          }
-        ]
-      },
-      {
         test: /\.ttf/,
         use: 'file-loader'
       },

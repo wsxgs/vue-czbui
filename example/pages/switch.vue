@@ -34,13 +34,13 @@ export default {
     toggleSwitch (val) {
       this.switchStatus = val
       if (val) {
-        this.$toast.show({
+        this.$toast({
           msg: '已打开',
           type: 'success',
           timeout: 1500
         })
       } else {
-        this.$toast.show({
+        this.$toast({
           msg: '已关闭',
           type: 'success',
           timeout: 1500

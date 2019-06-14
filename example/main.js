@@ -4,8 +4,8 @@ import http from './tool/request'
 
 import App from './app.vue'
 
-import CZBUI from 'vue-czbui'
 // import CZBUI from './../src/czbui'
+import CZBUI from 'vue-czbui'
 import 'vue-czbui/dist/czbui.css'
 
 Vue.prototype.$http = http

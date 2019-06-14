@@ -1,4 +1,5 @@
 // import Vue from 'vue'
+import './style/weui.min.less'
 
 import Tab from './components/tab/index.js'
 import Toast from './components/toast/index.js'
@@ -9,8 +10,6 @@ import WeuiSwitch from './components/switch/index.js'
 import CheckBox from './components/checkBox/index.js'
 import Toolbar from './components/toolbar/index.js'
 import InfiniteScroll from './components/infinitescroll/index'
-
-import './../static/css/weui.min.less'
 
 const list = [Tab, WeuiSwitch, CheckBox, InfiniteScroll, Toolbar]
 

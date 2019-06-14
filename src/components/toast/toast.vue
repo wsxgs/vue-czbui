@@ -42,7 +42,9 @@ export default {
 .weui-toast {
   position: fixed;
   z-index: 5000;
-  width: 120px;
+  width: auto;
+  min-width: 120px;
+  padding: 0 15px;
   min-height: auto;
   top: 180px;
   left: 50%;
