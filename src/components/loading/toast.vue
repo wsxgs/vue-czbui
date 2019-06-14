@@ -2,10 +2,7 @@
   <div class="toast" id="toast">
     <div class="weui-mask_transparent"></div>
     <div class="weui-toast">
-      <i
-        class="weui-icon_toast"
-        :class="{'weui-icon-success-no-circle': type === 'success', 'weui-icon-info-circle': type === 'warn', 'weui-icon-cancel': type === 'error'}"
-      ></i>
+      <i class="weui-icon_toast weui-loading"></i>
       <p class="weui-toast__content">{{msg}}</p>
     </div>
   </div>
@@ -14,7 +11,7 @@
 <script>
 import { setTimeout } from 'timers'
 export default {
-  name: 'Toast',
+  name: 'Loading',
   mounted () {
     this.$nextTick(() => {
       this.showToast()
@@ -72,19 +69,12 @@ export default {
       font-size: 46px;
     }
   }
-  &.weui-icon-info-circle {
-    font-size: 23px;
-    &:before {
-      color: #ffffff;
-      font-size: 38px;
-    }
-  }
-  &.weui-icon-cancel {
-    font-size: 23px;
-    &:before {
-      color: #ffffff;
-      font-size: 38px;
-    }
+  &.weui-loading {
+    display: inline-block;
+    margin: 23px 0 -2px;
+    width: 40px;
+    height: 40px;
+    vertical-align: baseline;
   }
 }
 .weui-toast__content {

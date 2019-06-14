@@ -1,4 +1,4 @@
-<!--  -->
+
 <template>
   <div class="toolbar-wrap">
     <div class="toolbar">
@@ -39,7 +39,7 @@ export default {
 
   mounted () {
     this.$nextTick(() => {
-     
+
     })
   },
 
@@ -52,11 +52,11 @@ export default {
 
 </script>
 <style lang='less' scoped>
-.toolbar-wrap{
+.toolbar-wrap {
   height: 46px;
 }
 
-.toolbar{
+.toolbar {
   position: fixed;
   box-sizing: border-box;
   padding: 0 15px;
@@ -70,7 +70,7 @@ export default {
   left: 0;
 }
 
-.toolbar .back{
+.toolbar .back {
   position: relative;
   width: 30px;
   height: 46px;
@@ -79,13 +79,13 @@ export default {
   margin-left: -100%;
 }
 
-.toolbar .back:after{
+.toolbar .back:after {
   content: " ";
   display: inline-block;
   height: 10px;
   width: 10px;
   border-width: 0px 0px 2px 2px;
-  border-color: #C8C8CD;
+  border-color: #c8c8cd;
   border-style: solid;
   -webkit-transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
   transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
@@ -97,7 +97,7 @@ export default {
   left: 2px;
 }
 
-.toolbar .title{
+.toolbar .title {
   position: relative;
   float: left;
   width: 100%;
@@ -108,7 +108,7 @@ export default {
   color: #333;
 }
 
-.toolbar .right{
+.toolbar .right {
   float: left;
   width: 32px;
   height: 46px;

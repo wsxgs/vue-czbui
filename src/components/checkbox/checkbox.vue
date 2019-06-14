@@ -1,13 +1,17 @@
-<!--  -->
+
 <template>
   <div class="weui-cells weui-cells_checkbox">
-    <div class="weui-cell weui-check__label" :class="{checked: item.isChecked}" v-for="(item, index) in checkBoxList" :key="item.id" @click="checkItem(item, index)">
-        <div class="weui-cell__bd">
-          {{item.label}}
-        </div>
-        <div class="weui-cell__ft" >
-          <i class="weui-icon-checked"></i>
-        </div>
+    <div
+      class="weui-cell weui-check__label"
+      :class="{checked: item.isChecked}"
+      v-for="(item, index) in checkBoxList"
+      :key="item.id"
+      @click="checkItem(item, index)"
+    >
+      <div class="weui-cell__bd">{{item.label}}</div>
+      <div class="weui-cell__ft">
+        <i class="weui-icon-checked"></i>
+      </div>
     </div>
   </div>
 </template>
@@ -56,13 +60,13 @@ export default {
 
 <style lang='less' scoped>
 .weui-icon-checked:before {
-  content: '\EA01';
+  content: "\EA01";
   color: #c9c9c9;
   font-size: 23px;
   display: block;
 }
 .checked .weui-icon-checked:before {
-  content: '\EA06';
+  content: "\EA06";
   color: #09bb07;
 }
 </style>

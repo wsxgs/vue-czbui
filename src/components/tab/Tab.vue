@@ -1,10 +1,14 @@
-<!--  -->
+
 <template>
   <div class="weui-tab">
     <div class="weui-navbar">
-      <div class="weui-navbar__item" v-for="(item, index, key) in tabList" v-bind:class="{'weui-bar__item_on': activeIndex === index}" v-bind:key="key" v-on:click="toggleTab(item, index)">
-        {{item.label}}
-      </div>
+      <div
+        class="weui-navbar__item"
+        v-for="(item, index, key) in tabList"
+        v-bind:class="{'weui-bar__item_on': activeIndex === index}"
+        v-bind:key="key"
+        v-on:click="toggleTab(item, index)"
+      >{{item.label}}</div>
     </div>
   </div>
 </template>
@@ -32,7 +36,7 @@ export default {
   mounted () {
     this.$nextTick(() => {
       let activeItem = document.getElementsByClassName('weui-bar__item_on')
-      activeItem[0].style = "color: " + this.activeColor + ";border-bottom: 1px solid " + this.activeColor + ""
+      activeItem[0].style = 'color: ' + this.activeColor + ';border-bottom: 1px solid ' + this.activeColor + ''
     })
   },
 
@@ -44,9 +48,9 @@ export default {
       let activeItem = document.getElementsByClassName('weui-bar__item_on')
       for (let i = 0; i < tabItem.length; i++) {
         if (i === index) {
-          tabItem[i].style = "color: " + this.activeColor + ";border-color: " + this.activeColor + ""
+          tabItem[i].style = 'color: ' + this.activeColor + ';border-color: ' + this.activeColor + ''
         } else {
-          tabItem[i].style = "color: #666;border-color: #fff"
+          tabItem[i].style = 'color: #666;border-color: #fff'
         }
       }
     }

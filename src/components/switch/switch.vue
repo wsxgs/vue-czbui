@@ -1,35 +1,35 @@
-<!--  -->
+
 <template>
   <div class="weui-switch" :class="{checked: switchStatus}" type="checkbox" @click="toggle"></div>
 </template>
 
 <script>
 export default {
-  name: "WeuiSwitch",
+  name: 'WeuiSwitch',
 
-  data() {
-    return {};
+  data () {
+    return {}
   },
 
-  props: ["switchStatus"],
+  props: ['switchStatus'],
 
   components: {},
 
   computed: {},
 
-  mounted() {
-    this.$nextTick(() => {});
+  mounted () {
+    this.$nextTick(() => { })
   },
 
   methods: {
-    toggle() {
-      this.$emit("toggleSwitch", !this.switchStatus);
+    toggle () {
+      this.$emit('toggleSwitch', !this.switchStatus)
     }
   }
-};
+}
 </script>
 <style lang='less' scoped>
-.weui-switch{
+.weui-switch {
   display: inline-block;
   vertical-align: middle;
 }

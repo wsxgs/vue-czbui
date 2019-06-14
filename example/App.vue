@@ -1,5 +1,5 @@
 <template>
-  <section class="app">
+  <section id="app" class="app">
     <transition name="fade" class="box">
       <router-view></router-view>
     </transition>
@@ -7,18 +7,21 @@
 </template>
 
 <style lang="less">
-body{
+body {
   background-color: #f8f8f8;
 }
-.fade-enter-active  {
-    transition: 0.2s
+.app {
+  min-height: 100vh;
+}
+.fade-enter-active {
+  transition: 0.3s;
 }
 .fade-enter {
   opacity: 0;
-  transform: translateX(100%)
+  // transform: translateX(100%);
 }
 .fade-leave-to {
-  opacity: 0;
-  transform: translateX(-100%)
+  opacity: 1;
+  // transform: translateX(-100%);
 }
 </style>

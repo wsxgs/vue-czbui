@@ -1,28 +1,37 @@
 <template>
-  <div class='dialog'>
-
+  <div class="dialog">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">操作反馈</span>
-      <a href="" slot="right"></a>
+      <a href slot="right"></a>
     </Toolbar>
 
-    <div class='button-sp-area'>
-        <button type='button' class='weui-btn weui-btn_default' v-on:click='showToastLoading'>显示Toast(Loading)</button>
-        <button type='button' class='weui-btn weui-btn_primary' v-on:click='showToastSuccess'>显示Toast(success)</button>
-        <button type='button' class='weui-btn weui-btn_warn' v-on:click='showToastWarn'>显示Toast(error)</button>
-    </div>
-    <div class='button-sp-area'>
-        <button type='button' class='weui-btn weui-btn_default' v-on:click='showAlert'>alert</button>
-        <button type='button' class='weui-btn weui-btn_default' v-on:click='showConfim'>confim</button>
-    </div>
-    <div class='button-sp-area'>
-        <button type='button' class='weui-btn weui-btn_default' v-on:click='showActionSheet'>ActionSheet</button>
-    </div>
-    <div class='button-sp-area'>
-        <button type='button' class='weui-btn weui-btn_default' v-on:click='showNotify'>表单验证</button>
+    <div class="button-sp-area">
+      <button
+        type="button"
+        class="weui-btn weui-btn_default"
+        v-on:click="showToastLoading"
+      >显示Toast(Loading)</button>
+
+      <button
+        type="button"
+        class="weui-btn weui-btn_primary"
+        v-on:click="showToastSuccess"
+      >显示Toast(success)</button>
+      <button type="button" class="weui-btn weui-btn_warn" v-on:click="showToastWarn">显示Toast(error)</button>
     </div>
 
+    <div class="button-sp-area">
+      <button type="button" class="weui-btn weui-btn_default" v-on:click="showAlert">alert</button>
+      <button type="button" class="weui-btn weui-btn_default" v-on:click="showConfim">confim</button>
+    </div>
+    <div class="button-sp-area">
+      <button
+        type="button"
+        class="weui-btn weui-btn_default"
+        v-on:click="showActionSheet"
+      >ActionSheet</button>
+    </div>
   </div>
 </template>
 
@@ -41,31 +50,25 @@ export default {
   },
   methods: {
     showToastLoading () {
-      this.$toast.show({
+      this.$loading.show({
         type: 'loading',
         msg: '加载中'
       })
       setTimeout(() => {
-        this.$toast.hide()
+        this.$loading.hide()
       }, 2000)
     },
     showToastSuccess () {
-      this.$toast.show({
+      this.$toast({
         type: 'success',
         msg: '成功提示',
         timeout: '1500'
       })
     },
     showToastWarn () {
-      this.$toast.show({
+      this.$toast({
         type: 'error',
         msg: '错误提示',
-        timeout: '1500'
-      })
-    },
-    showNotify () {
-      this.$notify({
-        msg: '手机号格式不正确',
         timeout: '1500'
       })
     },
@@ -116,10 +119,10 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='less' scoped>
-.page{
+.page {
   padding-top: 26px;
 }
-.button-sp-area{
+.button-sp-area {
   margin: 15px;
 }
 </style>

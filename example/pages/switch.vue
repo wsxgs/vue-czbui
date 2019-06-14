@@ -1,11 +1,10 @@
-<!-- Tab -->
+
 <template>
   <div class="switch">
-
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">开关</span>
-      <a href="" slot="right"></a>
+      <a href slot="right"></a>
     </Toolbar>
 
     <div class="weui-cells">
@@ -18,8 +17,6 @@
         </div>
       </div>
     </div>
-    
-
   </div>
 </template>
 
@@ -37,22 +34,16 @@ export default {
     toggleSwitch (val) {
       this.switchStatus = val
       if (val) {
-        this.$dialog({
-          title: '',
+        this.$toast.show({
           msg: '已打开',
-          isShowCancel: false,
-          confirmSure: function () {
-
-          }
+          type: 'success',
+          timeout: 1500
         })
       } else {
-        this.$dialog({
-          title: '',
+        this.$toast.show({
           msg: '已关闭',
-          isShowCancel: false,
-          confirmSure: function () {
-
-          }
+          type: 'success',
+          timeout: 1500
         })
       }
     }

@@ -1,15 +1,13 @@
-<!-- Tab -->
+
 <template>
   <div class="tab">
-
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">tab切换</span>
-      <a href="" slot="right"></a>
+      <a href slot="right"></a>
     </Toolbar>
 
     <Tab :tabList="tabList" @:checkTab="checkTab" :activeColor="activeColor"></Tab>
-
   </div>
 </template>
 

@@ -1,74 +1,26 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Resource from 'vue-resource';
+import Vue from 'vue'
+import router from './router'
+import http from './tool/request'
 
-import CZBUI from './../src/czbui.js';
-import Index from './pages/index.vue';
-import Slider from './pages/slider.vue';
-import Infinitescroll from './pages/infinitescroll.vue';
-import Tab from './pages/tab.vue';
-import Dialog from './pages/dialog.vue';
-import Switch from './pages/switch.vue';
-import CheckBox from './pages/CheckBox.vue';
+import App from './app.vue'
 
-import App from './app.vue';
+import CZBUI from 'vue-czbui'
+// import CZBUI from './../src/czbui'
+import 'vue-czbui/dist/czbui.css'
 
-// czbui
-import './../src/czbui.js'
+Vue.prototype.$http = http
 
-// import czbui from 'vue-czbui'
-// import 'vue-czbui/dist/czbui.css'
+Vue.use(CZBUI)
 
-Vue.use(VueRouter);
-Vue.use(Resource);
-Vue.use(CZBUI);
+router.beforeEach((to, from, next) => {
+  next()
+})
 
-document.addEventListener('DOMContentLoaded', function () {
-  typeof FastClick === 'function' && FastClick.attach(document.body);
-}, false);
-
-const router = new VueRouter({
-  routes: [{
-      path: '/',
-      name: 'index',
-      component: Index
-    },
-    {
-      path: '/Slider',
-      name: 'slider',
-      component: Slider
-    },
-    {
-      path: '/Infinitescroll',
-      name: 'infinitescroll',
-      component: Infinitescroll
-    },
-    {
-      path: '/tab',
-      name: 'tab',
-      component: Tab
-    },
-    {
-      path: '/dialog',
-      name: 'dialog',
-      component: Dialog
-    },
-    {
-      path: '/switch',
-      name: 'switch',
-      component: Switch
-    },
-    {
-      path: '/checkBox',
-      name: 'checkBox',
-      component: CheckBox
-    }
-  ]
-});
-
-const app = new Vue({
+new Vue({
   router: router,
   render: v => v(App)
-}).$mount('#app');
+}).$mount('#app')
 
-let scrollTop = 0;
+if (module.hot) {
+  module.hot.accept(this, function () {})
+}

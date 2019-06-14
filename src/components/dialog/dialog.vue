@@ -1,21 +1,32 @@
 <template>
   <div class="dialog" id="dialog">
     <div class="js_dialog">
-        <div class="weui-mask"></div>
-        <div class="weui-dialog" >
-            <div class="weui-dialog__hd" v-if="title"><span class="weui-dialog__title">{{title}}</span></div>
-            <div class="weui-dialog__bd">{{msg}}</div>
-            <div class="weui-dialog__ft">
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" v-if="isShowCancel" @click="closeDialog">取消</a>
-                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" @click="confime">确定</a>
-            </div>
+      <div class="weui-mask"></div>
+      <div class="weui-dialog">
+        <div class="weui-dialog__hd" v-if="title">
+          <span class="weui-dialog__title">{{title}}</span>
         </div>
+        <div class="weui-dialog__bd">{{msg}}</div>
+        <div class="weui-dialog__ft">
+          <a
+            href="javascript:;"
+            class="weui-dialog__btn weui-dialog__btn_default"
+            v-if="isShowCancel"
+            @click="closeDialog"
+          >取消</a>
+          <a
+            href="javascript:;"
+            class="weui-dialog__btn weui-dialog__btn_primary"
+            @click="confime"
+          >确定</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { setTimeout } from 'timers';
+import { setTimeout } from 'timers'
 export default {
   name: 'Dialog',
   mounted () {
@@ -32,8 +43,8 @@ export default {
       let Dialog = document.getElementById('dialog')
       Dialog.setAttribute('class', 'dialog')
       setTimeout(() => {
-        document.body.removeChild(Dialog) 
-      }, 300)       
+        document.body.removeChild(Dialog)
+      }, 300)
     },
     confime () {
       this.confirmSure()
@@ -65,6 +76,10 @@ export default {
 .weui-dialog__hd {
   padding: 20px 25px 8px;
   font-size: 0;
+
+  .weui-dialog__title {
+    font-size: 17px;
+  }
 }
 .weui-dialog__bd {
   min-height: 36px;
@@ -74,7 +89,10 @@ export default {
     color: #353535;
   }
 }
-.weui-dialog__btn:active{
+.weui-dialog__btn {
+  font-size: 16px;
+}
+.weui-dialog__btn:active {
   background-color: #fff;
 }
 </style>
