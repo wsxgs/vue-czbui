@@ -1,50 +1,70 @@
+const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 module.exports = {
   module: {
-    loaders: [{
+    rules: [
+      {
         test: /\.vue$/,
-        loader: 'vue',
-        exclude: /node_modules/
+        use: 'vue-loader'
       },
       {
         test: /\.js$/,
-        loader: 'babel',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        }
       },
       {
         test: /\.less$/,
-        loader: 'style!css!less',
-        exclude: /node_modules/
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 2 } },
+          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: 'postcss.config.js' // 根目录创建此文件
+              }
+            }
+          },
+          {
+            loader: 'less-loader' // compiles Less to CSS
+          }
+        ]
       },
       {
         test: /\.css$/,
-        loader: 'style!css',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.json$/,
-        loader: 'json',
-        exclude: /node_modules/
+        use: [
+          'style-loader',
+          { loader: 'css-loader', options: { importLoaders: 2 } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: 'postcss.config.js' // 根目录创建此文件
+              }
+            }
+          }
+        ]
       },
       {
         test: /\.ttf/,
-        loader: 'file',
-        exclude: /node_modules/
+        use: 'file-loader'
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000
-        }
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000
+            }
+          }
+        ]
       }
     ]
   },
-  vue: {
-    postcss: [
-      require('autoprefixer')({
-        browsers: ['Android >= 4', 'Explorer >= 10', 'iOS >= 6'],
-        cascade: false
-      })
-    ]
-  }
-};
+  plugins: [new VueLoaderPlugin()]
+}
