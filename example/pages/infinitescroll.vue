@@ -88,6 +88,8 @@ export default {
       width: 68px;
       height: 68px;
       margin-right: 20px;
+      background: #ccc url("./../assets/logo.png") no-repeat center center;
+      background-size: 40px 40px;
     }
 
     .content {
