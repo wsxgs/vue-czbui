@@ -16,7 +16,7 @@ import { setTimeout } from 'timers'
 export default {
   name: 'Toast',
   mounted () {
-    this.$nextTick(() => {
+    setTimeout(() => {
       this.showToast()
     })
   },

@@ -5,9 +5,9 @@
       <div
         class="weui-navbar__item"
         v-for="(item, index, key) in tabList"
-        v-bind:class="{'weui-bar__item_on': activeIndex === index}"
-        v-bind:key="key"
-        v-on:click="toggleTab(item, index)"
+        :class="{'weui-bar__item_on': activeTabIndex === index}"
+        :key="key"
+        @click="toggleTab(item, index)"
       >{{item.label}}</div>
     </div>
   </div>
@@ -19,11 +19,11 @@ export default {
 
   data () {
     return {
-      activeIndex: 0
+
     }
   },
 
-  props: ['tabList', 'activeColor'],
+  props: ['tabList', 'activeColor', 'activeTabIndex'],
 
   components: {
 
@@ -43,9 +43,8 @@ export default {
   methods: {
     toggleTab (item, index) {
       this.activeIndex = index
-      this.$emit('checkTab', item)
+      this.$emit('checkTab', index)
       let tabItem = document.getElementsByClassName('weui-navbar__item')
-      let activeItem = document.getElementsByClassName('weui-bar__item_on')
       for (let i = 0; i < tabItem.length; i++) {
         if (i === index) {
           tabItem[i].style = 'color: ' + this.activeColor + ';border-color: ' + this.activeColor + ''
@@ -60,23 +59,35 @@ export default {
 </script>
 <style lang='less' scoped>
 .weui-navbar {
+  position: relative;
   height: 50px;
   overflow: hidden;
   background-color: #fff;
+
+  &:after {
+    content: none;
+  }
 }
 .weui-navbar__item {
   box-sizing: border-box;
   transition: 0.3s;
   padding: 0;
   height: 50px;
+  border-bottom: 1px solid rgb(97, 90, 90);
   line-height: 50px;
+  transition: 0.3s;
 }
 .weui-navbar__item.weui-bar__item_on {
   background-color: #fff;
-  border-bottom: 2px solid #fff;
+  border-width: 0 0 2px 0;
+  border-style: solid;
 }
 .weui-navbar__item:after {
   height: 20px;
   top: 15px;
+
+  &:after {
+    border-color: #eee;
+  }
 }
 </style>

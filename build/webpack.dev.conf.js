@@ -12,6 +12,7 @@ const config = {
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
   entry: {
     main: './example/main.js',
     vendors: ['vue', 'vue-router']
@@ -75,7 +76,9 @@ module.exports = merge(baseWebpackConfig, {
       }
     ]
   },
-  optimization: {},
+  optimization: {
+    splitChunks: {}
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html'

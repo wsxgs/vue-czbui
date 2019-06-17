@@ -13,7 +13,7 @@ import { setTimeout } from 'timers'
 export default {
   name: 'Loading',
   mounted () {
-    this.$nextTick(() => {
+    setTimeout(() => {
       this.showToast()
     })
   },
@@ -21,14 +21,6 @@ export default {
     showToast () {
       let toast = document.getElementById('toast')
       toast.setAttribute('class', 'toast on')
-      if (this.timeout) {
-        setTimeout(() => {
-          toast.setAttribute('class', 'toast')
-          setTimeout(() => {
-            document.body.removeChild(toast)
-          }, 300)
-        }, this.timeout)
-      }
     }
   }
 }

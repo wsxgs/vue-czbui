@@ -1,7 +1,11 @@
 {
   "name": "vue-czbui",
   "description": "A mobile components Library with Vue2.js.",
-  "version": "2.0.6",
+  "version": "2.0.12",
+  "slideEffects": [
+    "*.css",
+    "@babel/polyfill"
+  ],
   "author": "wangzhiqiang",
   "main": "dist/czbui.js",
   "style": "dist/czbui.css",
@@ -59,7 +63,7 @@
     "style-loader": "^0.13.1",
     "url-loader": "^1.1.1",
     "vue": "^2.5.2",
-    "vue-czbui": "^2.0.6",
+    "vue-czbui": "^2.0.11",
     "vue-loader": "^15.7.0",
     "vue-resource": "^1.0.3",
     "vue-router": "^3.0.6",

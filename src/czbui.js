@@ -1,4 +1,4 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 import './style/weui.min.less'
 
 import Tab from './components/tab/index.js'

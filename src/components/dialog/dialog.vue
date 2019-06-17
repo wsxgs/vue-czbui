@@ -30,7 +30,7 @@ import { setTimeout } from 'timers'
 export default {
   name: 'Dialog',
   mounted () {
-    this.$nextTick(() => {
+    setTimeout(() => {
       this.showDialog()
     })
   },
@@ -74,7 +74,7 @@ export default {
   transform: translate(-50%, -60%) scale(1);
 }
 .weui-dialog__hd {
-  padding: 20px 25px 8px;
+  padding: 26px 20px 10px;
   font-size: 0;
 
   .weui-dialog__title {
@@ -83,9 +83,10 @@ export default {
 }
 .weui-dialog__bd {
   min-height: 36px;
+  padding: 0 20px 20px;
   &:first-child {
     font-size: 16px;
-    padding: 36px 20px 20px 20px;
+    padding: 36px 20px 30px 20px;
     color: #353535;
   }
 }
