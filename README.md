@@ -1,5 +1,7 @@
 # 一只基于 Vue2.x 的移动端&微信 UI
 
+## 安装
+
 npm install vue-czbui
 
 ## 开发
@@ -9,10 +11,6 @@ npm install vue-czbui
 
 2. npm run dev
 ```
-
-## 参考、使用的项目
-
-WEUI
 
 ## 组件使用方法
 
@@ -66,3 +64,7 @@ that.$actionsheet({
 	}
 })
 ```
+
+## 参考、使用的项目
+
+WEUI
