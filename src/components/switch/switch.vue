@@ -11,7 +11,12 @@ export default {
     return {}
   },
 
-  props: ['switchStatus'],
+  props: {
+    switchStatus: {
+      type: Boolean,
+      default: false
+    }
+  },
 
   components: {},
 
@@ -22,6 +27,9 @@ export default {
   },
 
   methods: {
+    /**
+     * 切换
+     */
     toggle () {
       this.$emit('toggleSwitch', !this.switchStatus)
     }

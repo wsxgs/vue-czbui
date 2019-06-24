@@ -35,10 +35,16 @@ export default {
     })
   },
   methods: {
+    /**
+     * 显示提示框
+     */
     showDialog () {
       let Dialog = document.getElementById('dialog')
       Dialog.setAttribute('class', 'dialog on')
     },
+    /**
+     * 关闭提示框
+     */
     closeDialog () {
       let Dialog = document.getElementById('dialog')
       Dialog.setAttribute('class', 'dialog')
@@ -46,6 +52,9 @@ export default {
         document.body.removeChild(Dialog)
       }, 300)
     },
+    /**
+     * 点击确认
+     */
     confime () {
       this.confirmSure()
       this.closeDialog()

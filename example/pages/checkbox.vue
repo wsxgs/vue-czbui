@@ -24,6 +24,7 @@ export default {
   },
   data () {
     return {
+      // 复选框列表
       checkBoxList: [
         {
           label: '选项一',
@@ -38,6 +39,7 @@ export default {
           value: 3
         }
       ],
+      // 复选框选中列表
       checkValueList: []
     }
   },

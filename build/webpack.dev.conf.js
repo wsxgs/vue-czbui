@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 
 const config = {
@@ -15,7 +16,7 @@ module.exports = merge(baseWebpackConfig, {
   devtool: 'cheap-module-eval-source-map',
   entry: {
     main: './example/main.js',
-    vendors: ['vue', 'vue-router']
+    vendor: ['vue', 'vue-router', 'axios']
   },
   output: {
     path: path.join(__dirname, './../dist'),
@@ -77,9 +78,27 @@ module.exports = merge(baseWebpackConfig, {
     ]
   },
   optimization: {
-    splitChunks: {}
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    },
+    runtimeChunk: {
+      name: entrypoint => `runtime~${entrypoint.name}`
+    }
   },
   plugins: [
+    new CleanWebpackPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),

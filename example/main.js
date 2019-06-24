@@ -4,9 +4,9 @@ import http from './tool/request'
 
 import App from './app.vue'
 
-// import CZBUI from './../src/czbui'
-import CZBUI from 'vue-czbui'
-import 'vue-czbui/dist/czbui.css'
+import CZBUI from './../src/czbui'
+// import CZBUI from 'vue-czbui'
+// import 'vue-czbui/dist/czbui.css'
 
 Vue.prototype.$http = http
 
@@ -15,6 +15,8 @@ Vue.use(CZBUI)
 router.beforeEach((to, from, next) => {
   next()
 })
+
+console.log(131)
 
 new Vue({
   router: router,

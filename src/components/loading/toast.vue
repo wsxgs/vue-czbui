@@ -14,11 +14,15 @@ export default {
   name: 'Loading',
   mounted () {
     setTimeout(() => {
-      this.showToast()
+      // 显示loading
+      this.showLoading()
     })
   },
   methods: {
-    showToast () {
+    /**
+     * 显示loading
+     */
+    showLoading () {
       let toast = document.getElementById('toast')
       toast.setAttribute('class', 'toast on')
     }

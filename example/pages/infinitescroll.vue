@@ -29,37 +29,56 @@ export default {
   },
   data () {
     return {
+      // 列表
       list: null,
+      // 当前页
       pageIndex: 1
     }
   },
   methods: {
+    /**
+     * 下拉刷新
+     */
     pullDownRefresh () {
       this.pageIndex = 1
       this.getListData('refresh', this.pageIndex)
     },
+    /**
+     * 上拉加载
+     */
     pullUpLoad () {
       this.getListData('load', this.pageIndex)
     },
+    /**
+     * 获取列表数据
+     */
     async getListData (type, page) {
-      let { code } = await this.$http.get('/api', { page: page })
+      let { code, msg } = await this.$http.get('/api', { page: page })
       let { list, total } = listData
-      if (this.pageIndex === 1 && !this.list) {
-        this.list = []
-      }
+
       if (code !== 200) {
+        this.$toast.show({
+          type: 'error',
+          msg: msg
+        })
         return
       }
+      // 无数据
       if (total === 0) {
         this.$refs.infiniteScroll.finished()
         return
       }
+
       if (type === 'load') {
+        // 上拉加载
         this.list = [...this.list, ...list]
       } else {
+        // 下拉刷新
         this.list = list
       }
+
       if (this.list.length === total) {
+        // 数据全部加载完毕
         this.$refs.infiniteScroll.finished()
       } else {
         this.$refs.infiniteScroll.loaded()

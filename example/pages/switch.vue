@@ -27,10 +27,14 @@ export default {
   },
   data () {
     return {
+      // 开关状态
       switchStatus: false
     }
   },
   methods: {
+    /**
+     * 切换开关状态
+     */
     toggleSwitch (val) {
       this.switchStatus = val
       if (val) {

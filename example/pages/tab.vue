@@ -25,7 +25,9 @@ export default {
   },
   data () {
     return {
+      // 高亮颜色
       activeColor: '#1aad19',
+      // tab 列表
       tabList: [
         {
           id: 1,
@@ -40,18 +42,40 @@ export default {
           label: '选项三'
         }
       ],
+      // 选中tab index
       activeTabIndex: 0,
+      // 选中tab
+      activeTab: null,
+      // 内容
       content: '我是选项一对应的内容'
     }
   },
   methods: {
-    checkTab (index) {
-      this.activeTabIndex = index
-      if (index === 0) {
+    /**
+     * tab切换
+     */
+    checkTab (opts) {
+      this.activeTabIndex = opts.index
+      this.activeTab = opts.item
+      this.getData()
+    },
+    /**
+     * 获取数据
+     */
+    async getData () {
+      let { code, msg } = await this.$http.get('/api', { id: this.activeTab.id })
+      if (code !== 200) {
+        this.$toast.show({
+          type: 'error',
+          msg: msg
+        })
+        return
+      }
+      if (this.activeTab.id === 1) {
         this.content = '我是选项一对应的内容'
-      } else if (index === 1) {
+      } else if (this.activeTab.id === 2) {
         this.content = '我是选项二对应的内容'
-      } else if (index === 2) {
+      } else if (this.activeTab.id === 3) {
         this.content = '我是选项三对应的内容'
       }
     }

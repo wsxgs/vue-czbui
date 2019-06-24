@@ -7,11 +7,7 @@
     </Toolbar>
 
     <div class="button-sp-area">
-      <button
-        type="button"
-        class="weui-btn weui-btn_default"
-        v-on:click="showToastLoading"
-      >显示Toast(Loading)</button>
+      <button type="button" class="weui-btn weui-btn_default" v-on:click="showLoading">显示Loading</button>
 
       <button
         type="button"
@@ -49,15 +45,22 @@ export default {
     })
   },
   methods: {
-    showToastLoading () {
+    /**
+     * 显示加载中
+     */
+    showLoading () {
       this.$loading.show({
         type: 'loading',
         msg: '加载中'
       })
       setTimeout(() => {
+        // 隐藏加载中
         this.$loading.hide()
       }, 2000)
     },
+    /**
+     * 显示成功提示
+     */
     showToastSuccess () {
       this.$toast({
         type: 'success',
@@ -65,6 +68,9 @@ export default {
         timeout: '1500'
       })
     },
+    /**
+     * 显示警告提示
+     */
     showToastWarn () {
       this.$toast({
         type: 'error',
@@ -72,6 +78,9 @@ export default {
         timeout: '1500'
       })
     },
+    /**
+     * 显示alert
+     */
     showAlert () {
       this.$dialog({
         title: '',
@@ -82,6 +91,9 @@ export default {
         }
       })
     },
+    /**
+     * 显示confim
+     */
     showConfim () {
       this.$dialog({
         title: '系统提示',
@@ -92,6 +104,9 @@ export default {
         }
       })
     },
+    /**
+     * 显示选择框
+     */
     showActionSheet () {
       var that = this
       that.$actionsheet({

@@ -17,16 +17,32 @@
 export default {
   name: 'Tab',
 
+  components: {
+
+  },
+
   data () {
     return {
 
     }
   },
 
-  props: ['tabList', 'activeColor', 'activeTabIndex'],
-
-  components: {
-
+  props: {
+    // tab列表
+    tabList: {
+      default: [],
+      type: Array
+    },
+    // 高亮颜色
+    activeColor: {
+      default: '#fff',
+      type: String
+    },
+    // 当前选中index
+    activeTabIndex: {
+      default: 0,
+      type: Number
+    }
   },
 
   computed: {
@@ -35,15 +51,17 @@ export default {
 
   mounted () {
     this.$nextTick(() => {
+      // 高亮颜色赋值
       let activeItem = document.getElementsByClassName('weui-bar__item_on')
       activeItem[0].style = 'color: ' + this.activeColor + ';border-bottom: 1px solid ' + this.activeColor + ''
     })
   },
 
   methods: {
+    // 切换 tab
     toggleTab (item, index) {
       this.activeIndex = index
-      this.$emit('checkTab', index)
+      this.$emit('checkTab', { item: item, index: index })
       let tabItem = document.getElementsByClassName('weui-navbar__item')
       for (let i = 0; i < tabItem.length; i++) {
         if (i === index) {
@@ -73,7 +91,7 @@ export default {
   transition: 0.3s;
   padding: 0;
   height: 50px;
-  border-bottom: 1px solid rgb(97, 90, 90);
+  border-bottom: 1px solid #eee;
   line-height: 50px;
   transition: 0.3s;
 }
