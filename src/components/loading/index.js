@@ -3,11 +3,14 @@ import Loading from './toast.vue'
 
 const install = {
   show (opts) {
+    if (!opts) {
+      opts = {}
+    }
     const Constructor = Vue.extend(Loading)
     const Instance = new Constructor({
       data () {
         return {
-          msg: opts.msg ? opts.msg : '加载中'
+          msg: opts.msg || '加载中'
         }
       },
       methods: {}
