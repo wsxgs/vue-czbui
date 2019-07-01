@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import { setTimeout } from 'timers'
 export default {
   name: 'Tab',
 
@@ -66,16 +65,13 @@ export default {
      * params {Number} index
      */
     toggleTab (item, index) {
-      if (this.activeIndex === index) {
+      if (this.activeTabIndex === index) {
         return
       }
-      this.activeIndex = index
-      this.$nextTick(() => {
-        setTimeout(() => {
-          this.setActiveLineStyle()
-        }, 500)
-      })
       this.$emit('checkTab', { item: item, index: index })
+      this.$nextTick(() => {
+        this.setActiveLineStyle()
+      })
     },
     /**
      * 设置选中tab及线的样式
@@ -89,7 +85,7 @@ export default {
       let activeItemWidth = activeItemChild.offsetWidth
       let line = document.getElementById('line')
       for (let i = 0; i < tabItem.length; i++) {
-        if (i === this.activeIndex) {
+        if (i === this.activeTabIndex) {
           // 选中改变颜色
           tabItem[i].style = `color: ${this.activeColor}`
         } else {
