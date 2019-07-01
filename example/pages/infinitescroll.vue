@@ -6,8 +6,7 @@
       @pullDownRefresh="pullDownRefresh"
       @pullUpLoad="pullUpLoad"
     >
-      <div class="skeleton" v-if="!list"></div>
-      <ul slot="content" class="group" v-if="list">
+      <ul slot="content" class="group">
         <li v-for="item in list" :key="item.idd">
           <img :src="item.img" alt>
           <div class="content">
@@ -30,7 +29,7 @@ export default {
   data () {
     return {
       // 列表
-      list: null,
+      list: [],
       // 当前页
       pageIndex: 1
     }
@@ -54,6 +53,7 @@ export default {
      */
     async getListData (type, page) {
       let { code, msg } = await this.$http.get('/api', { page: page })
+
       let { list, total } = listData
 
       if (code !== 200) {
@@ -61,12 +61,10 @@ export default {
           type: 'error',
           msg: msg
         })
-        return
       }
       // 无数据
       if (total === 0) {
         this.$refs.infiniteScroll.finished()
-        return
       }
 
       if (type === 'load') {

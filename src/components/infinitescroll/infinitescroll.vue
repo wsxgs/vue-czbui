@@ -45,7 +45,7 @@ export default {
       isFinished: false, // 是否显示加载结束
       loadTimes: 0, // 加载次数
       timer: null, // 页面滚动防抖定时器
-      screenEl: '' // 监听元素 el
+      screenEl: window // 监听元素 el
     }
   },
   props: {
