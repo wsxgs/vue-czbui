@@ -2,11 +2,21 @@
 
 ## 安装
 
+```base
 npm install vue-czbui
+```
 
-## 开发
+## 使用
 
-```shell
+```base
+import CZBUI from 'vue-czbui'
+import 'vue-czbui/dist/czbui.css'
+Vue.use(CZBUI)
+```
+
+## 示例
+
+```base
 1. npm install
 
 2. npm run dev
@@ -64,6 +74,8 @@ that.$actionsheet({
 	}
 })
 ```
+
+### 其他组件使用可查看 example
 
 ## 参考、使用的项目
 

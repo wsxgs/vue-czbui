@@ -1,7 +1,7 @@
 {
   "name": "vue-czbui",
   "description": "A mobile components Library with Vue2.js.",
-  "version": "2.0.14",
+  "version": "2.0.15",
   "slideEffects": [
     "*.css",
     "@babel/polyfill"
