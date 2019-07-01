@@ -1,19 +1,23 @@
 
 <template>
   <div class="weui-tab">
-    <div class="weui-navbar">
+    <div class="weui-navbar" id="weui-navbar">
       <div
         class="weui-navbar__item"
         v-for="(item, index, key) in tabList"
         :class="{'weui-bar__item_on': activeTabIndex === index}"
         :key="key"
         @click="toggleTab(item, index)"
-      >{{item.label}}</div>
+      >
+        <span>{{item.label}}</span>
+      </div>
+      <div class="line" id="line"></div>
     </div>
   </div>
 </template>
 
 <script>
+import { setTimeout } from 'timers'
 export default {
   name: 'Tab',
 
@@ -51,25 +55,49 @@ export default {
 
   mounted () {
     this.$nextTick(() => {
-      // 高亮颜色赋值
-      let activeItem = document.getElementsByClassName('weui-bar__item_on')
-      activeItem[0].style = 'color: ' + this.activeColor + ';border-bottom: 1px solid ' + this.activeColor + ''
+      this.setActiveLineStyle()
     })
   },
 
   methods: {
-    // 切换 tab
+    /**
+     * 点击切换tab
+     * params {Object} item
+     * params {Number} index
+     */
     toggleTab (item, index) {
+      if (this.activeIndex === index) {
+        return
+      }
       this.activeIndex = index
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.setActiveLineStyle()
+        }, 500)
+      })
       this.$emit('checkTab', { item: item, index: index })
+    },
+    /**
+     * 设置选中tab及线的样式
+     */
+    setActiveLineStyle () {
       let tabItem = document.getElementsByClassName('weui-navbar__item')
+      let activeItem = document.querySelector('.weui-bar__item_on')
+      let activeItemChild = activeItem.childNodes[0] // span
+      let activeItemOffsetLeft = activeItem.offsetLeft
+      let activeItemChildOffsetLeft = activeItemChild.offsetLeft
+      let activeItemWidth = activeItemChild.offsetWidth
+      let line = document.getElementById('line')
       for (let i = 0; i < tabItem.length; i++) {
-        if (i === index) {
-          tabItem[i].style = 'color: ' + this.activeColor + ';border-color: ' + this.activeColor + ''
+        if (i === this.activeIndex) {
+          // 选中改变颜色
+          tabItem[i].style = `color: ${this.activeColor}`
         } else {
-          tabItem[i].style = 'color: #666;border-color: #fff'
+          tabItem[i].style = 'color: #666'
         }
       }
+      // 设置线的样式
+      line.style = `width: ${activeItemWidth}px; transform: translateX(${activeItemOffsetLeft + activeItemChildOffsetLeft}px); background-color: ${this.activeColor}`
     }
   }
 }
@@ -85,27 +113,35 @@ export default {
   &:after {
     content: none;
   }
+
+  .line {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 30px;
+    height: 1px;
+    background-color: #333;
+    transition: 0.3s;
+  }
 }
 .weui-navbar__item {
   box-sizing: border-box;
-  transition: 0.3s;
   padding: 0;
   height: 50px;
-  border-bottom: 1px solid #eee;
   line-height: 50px;
   transition: 0.3s;
-}
-.weui-navbar__item.weui-bar__item_on {
-  background-color: #fff;
-  border-width: 0 0 2px 0;
-  border-style: solid;
-}
-.weui-navbar__item:after {
-  height: 20px;
-  top: 15px;
+
+  &.weui-bar__item_on {
+    background-color: #fff;
+    border: none;
+  }
 
   &:after {
-    border-color: #eee;
+    content: none;
+  }
+
+  span {
+    display: inline-block;
   }
 }
 </style>

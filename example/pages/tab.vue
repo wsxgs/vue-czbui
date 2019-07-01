@@ -57,6 +57,7 @@ export default {
     checkTab (opts) {
       this.activeTabIndex = opts.index
       this.activeTab = opts.item
+      this.$loading.show()
       this.getData()
     },
     /**
@@ -78,6 +79,7 @@ export default {
       } else if (this.activeTab.id === 3) {
         this.content = '我是选项三对应的内容'
       }
+      this.$loading.hide()
     }
   }
 }
