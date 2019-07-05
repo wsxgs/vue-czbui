@@ -3,6 +3,7 @@
     <div class="weui-mask_transparent"></div>
     <div class="weui-toast">
       <i
+        v-if="type"
         class="weui-icon_toast"
         :class="{'weui-icon-success-no-circle': type === 'success', 'weui-icon-info-circle': type === 'warn', 'weui-icon-cancel': type === 'error'}"
       ></i>
@@ -43,8 +44,7 @@ export default {
   position: fixed;
   z-index: 5000;
   width: auto;
-  min-width: 120px;
-  padding: 0 15px;
+  padding: 0 30px;
   min-height: auto;
   top: 180px;
   left: 50%;
