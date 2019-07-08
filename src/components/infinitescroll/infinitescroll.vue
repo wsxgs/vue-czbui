@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Loading from './loading.vue'
+import Loading from './loading'
 export default {
   name: 'InfiniteScroll',
   components: {

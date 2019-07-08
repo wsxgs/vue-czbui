@@ -1,11 +1,8 @@
 import Vue from 'vue'
-import Loading from './toast.vue'
+import Loading from './loading.vue'
 
 const install = {
-  show (opts) {
-    if (!opts) {
-      opts = {}
-    }
+  show (opts: { msg: string }) {
     const Constructor = Vue.extend(Loading)
     const Instance = new Constructor({
       data () {
@@ -19,7 +16,7 @@ const install = {
     document.body.appendChild(loading.$el)
   },
   hide () {
-    let toast = document.getElementById('toast')
+    let toast: any = document.getElementById('toast')
     if (!toast) {
       return
     }

@@ -4,7 +4,7 @@ import http from './tool/request'
 
 import App from './app.vue'
 
-import CZBUI from './../src/czbui'
+import CZBUI from '../src/czbui'
 // import CZBUI from 'vue-czbui'
 // import 'vue-czbui/dist/czbui.css'
 import { _throttle, _debounce } from './tool/tool'
@@ -23,7 +23,3 @@ new Vue({
   router: router,
   render: v => v(App)
 }).$mount('#app')
-
-if (module.hot) {
-  module.hot.accept(this, function () {})
-}

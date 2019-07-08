@@ -1,15 +1,15 @@
 import axios from 'axios'
 import qs from 'qs'
-import Toast from 'vue-czbui/dist/components/toast/index'
-import Dialog from 'vue-czbui/dist/components/dialog/index'
+import Toast from 'vue-czbui/dist/components/toast/index.js'
+import Dialog from 'vue-czbui/dist/components/dialog/index.js'
 
-let baseURL = ''
-
+let baseURL: string = ''
 if (process.env.NODE_ENV === 'development') {
   baseURL = '/'
 } else {
   baseURL = '/'
 }
+
 // 使用由库提供的配置的默认值来创建实例
 var instance = axios.create({
   baseURL: baseURL,
@@ -17,18 +17,18 @@ var instance = axios.create({
 })
 
 let https = {
-  get (url, opts = {}) {
+  get (url: string, opts = {}) {
     return new Promise((resolve, reject) => {
       instance({
         method: 'GET',
         url: url + '?' + handleOptions(opts)
       })
-        .then(res => {
+        .then((res: any) => {
           if (res.data.code === 200) {
             resolve(res.data)
           } else {
             reject(res.data)
-            Toast.show({
+            Toast({
               type: 'error',
               msg: res.message,
               timeout: '1500'
@@ -46,7 +46,7 @@ let https = {
         })
     })
   },
-  post (url, opts = {}) {
+  post (url: string, opts = {}) {
     return new Promise((resolve, reject) => {
       instance({
         method: 'POST',
@@ -56,12 +56,12 @@ let https = {
           contentType: 'application/x-www-form-urlencoded'
         }
       })
-        .then(res => {
+        .then((res: any) => {
           if (res.data.code === 200) {
             resolve(res.data)
           } else {
             reject(res.data)
-            Toast.show({
+            Toast({
               type: 'error',
               msg: res.message,
               timeout: '1500'
@@ -81,7 +81,7 @@ let https = {
   }
 }
 
-function handleOptions (opts) {
+function handleOptions (opts: any) {
   if (typeof opts !== 'object') {
     return ''
   }

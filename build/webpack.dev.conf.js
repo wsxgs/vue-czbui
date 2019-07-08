@@ -15,7 +15,7 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   entry: {
-    main: './example/main.js',
+    main: './example/main.ts',
     vendor: ['vue', 'vue-router', 'axios']
   },
   output: {

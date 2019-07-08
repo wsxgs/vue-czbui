@@ -16,6 +16,17 @@ module.exports = {
         }
       },
       {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+          {
+            loader: 'ts-loader',
+            options: { appendTsxSuffixTo: [/\.vue$/] }
+          }
+        ]
+      },
+      {
         test: /\.ttf/,
         use: 'file-loader'
       },
@@ -31,6 +42,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  resolve: {
+    extensions: ['.vue', '.js', '.ts']
   },
   plugins: [new VueLoaderPlugin()]
 }

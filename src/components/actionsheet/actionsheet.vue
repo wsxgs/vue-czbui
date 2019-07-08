@@ -13,7 +13,7 @@
           @click="checkItem(item)"
         >
           <div class="cell-hd">
-            <img v-bind:src="item.icon" alt v-if="item.icon">
+            <img v-bind:src="item.icon" alt v-if="item.icon" />
             {{item.label}}
           </div>
           <div class="cell-ft">
@@ -31,34 +31,8 @@
 </template>
 
 <script>
-import { setTimeout } from 'timers'
 export default {
-  name: 'Select',
-  mounted () {
-    setTimeout(() => {
-      this.showActionsheet()
-    })
-  },
-  methods: {
-    showActionsheet () {
-      let Actionsheet = document.getElementById('actionsheet')
-      Actionsheet.setAttribute('class', 'actionsheet on')
-    },
-    checkItem (item) {
-      this.activeItem = item
-    },
-    closeActionsheet () {
-      let Actionsheet = document.getElementById('actionsheet')
-      Actionsheet.setAttribute('class', 'actionsheet')
-      setTimeout(() => {
-        document.body.removeChild(Actionsheet)
-      }, 300)
-    },
-    sureCheck () {
-      this.sureChecked()
-      this.closeActionsheet()
-    }
-  }
+  name: 'Actionsheet'
 }
 </script>
 

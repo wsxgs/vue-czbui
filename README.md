@@ -19,7 +19,7 @@ Vue.use(CZBUI)
 ```base
 1. npm install
 
-2. npm run dev
+2. npm run start
 ```
 
 ## 组件使用方法

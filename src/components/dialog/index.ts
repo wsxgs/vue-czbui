@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import Dialog from './dialog.vue'
 
-const install = opts => {
-  let div = document.createElement('div')
-  document.body.appendChild(div)
-
+const install = (opts: {
+title: string
+msg: string
+isShowCancel: boolean
+confirmSure: object
+}) => {
   const Constructor = Vue.extend(Dialog)
   const Instance = new Constructor({
     data () {
@@ -20,8 +22,8 @@ const install = opts => {
     methods: {
       confirmSure: opts.confirmSure ? opts.confirmSure : () => {}
     }
-  })
-  Instance.$mount(div)
+  }).$mount()
+  document.body.appendChild(Instance.$el)
 }
 
 export default install

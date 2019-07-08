@@ -21,25 +21,17 @@ export default {
   name: 'checkBox',
 
   data () {
-    return {
-
-    }
+    return {}
   },
 
   props: ['checkBoxList', 'checkValueList'],
 
-  components: {
+  components: {},
 
-  },
-
-  computed: {
-
-  },
+  computed: {},
 
   mounted () {
-    this.$nextTick(() => {
-
-    })
+    this.$nextTick(() => { })
   },
 
   methods: {
@@ -55,7 +47,6 @@ export default {
     }
   }
 }
-
 </script>
 
 <style lang='less' scoped>
