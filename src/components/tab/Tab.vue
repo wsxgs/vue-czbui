@@ -6,6 +6,7 @@
         class="weui-navbar__item"
         v-for="(item, index, key) in tabList"
         :class="{'weui-bar__item_on': activeTabIndex === index}"
+        :style="{color: activeTabIndex === index ? activeColor : ''}"
         :key="key"
         @click="toggleTab(item, index)"
       >
@@ -38,7 +39,7 @@ export default {
     },
     // 高亮颜色
     activeColor: {
-      default: '#fff',
+      default: 'rgb(26, 173, 25);',
       type: String
     },
     // 当前选中index
@@ -77,21 +78,13 @@ export default {
      * 设置选中tab及线的样式
      */
     setActiveLineStyle () {
-      let tabItem = document.getElementsByClassName('weui-navbar__item')
       let activeItem = document.querySelector('.weui-bar__item_on')
       let activeItemChild = activeItem.childNodes[0] // span
       let activeItemOffsetLeft = activeItem.offsetLeft
       let activeItemChildOffsetLeft = activeItemChild.offsetLeft
       let activeItemWidth = activeItemChild.offsetWidth
       let line = document.getElementById('line')
-      for (let i = 0; i < tabItem.length; i++) {
-        if (i === this.activeTabIndex) {
-          // 选中改变颜色
-          tabItem[i].style = `color: ${this.activeColor}`
-        } else {
-          tabItem[i].style = 'color: #666'
-        }
-      }
+
       // 设置线的样式
       line.style = `width: ${activeItemWidth}px; transform: translateX(${activeItemOffsetLeft + activeItemChildOffsetLeft}px); background-color: ${this.activeColor}`
     }
