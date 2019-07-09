@@ -6,33 +6,44 @@
       <a href slot="right"></a>
     </Toolbar>
     <div class="logo">
-      <img src="./../assets/logo.png" alt>
+      <img src="./../assets/logo.png" alt />
     </div>
     <div class="weui-cells">
-      <router-link class="weui-cell weui-cell_access" to="/infinitescroll">
-        <div class="weui-cell__bd">
-          <p>列表下拉刷新/上拉加载</p>
-        </div>
-        <div class="weui-cell__ft"></div>
-      </router-link>
       <router-link class="weui-cell weui-cell_access" to="/dialog">
         <div class="weui-cell__bd">
           <p>操作反馈</p>
         </div>
         <div class="weui-cell__ft"></div>
       </router-link>
-      <router-link class="weui-cell weui-cell_access" to="/tab">
+
+      <router-link class="weui-cell weui-cell_access" to="/infinitescroll">
         <div class="weui-cell__bd">
-          <p>tab切换</p>
+          <p>列表下拉刷新/上拉加载</p>
         </div>
         <div class="weui-cell__ft"></div>
       </router-link>
+
+      <router-link class="weui-cell weui-cell_access" to="/tab">
+        <div class="weui-cell__bd">
+          <p>选项卡</p>
+        </div>
+        <div class="weui-cell__ft"></div>
+      </router-link>
+
+      <router-link class="weui-cell weui-cell_access" to="/slider">
+        <div class="weui-cell__bd">
+          <p>滑块</p>
+        </div>
+        <div class="weui-cell__ft"></div>
+      </router-link>
+
       <router-link class="weui-cell weui-cell_access" to="/switch">
         <div class="weui-cell__bd">
           <p>开关</p>
         </div>
         <div class="weui-cell__ft"></div>
       </router-link>
+
       <router-link class="weui-cell weui-cell_access" to="/checkBox">
         <div class="weui-cell__bd">
           <p>复选框</p>
