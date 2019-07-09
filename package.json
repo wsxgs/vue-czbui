@@ -36,6 +36,8 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/runtime-corejs2": "^7.4.5",
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
     "add": "^2.0.6",
     "axios": "^0.19.0",
     "babel-loader": "^8.0.6",
@@ -87,7 +89,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "commitlint -e $GIT_PARAMS && npm run lint"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
 }
