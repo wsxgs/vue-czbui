@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Dialog from './dialog.vue'
+import Dialog from './Dialog.vue'
 
 const install = (opts: {
 title: string

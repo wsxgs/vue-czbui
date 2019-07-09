@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Toast from './toast.vue'
+import Toast from './Toast.vue'
 
 const install = (opts: { msg: string; type: string; timeout: object }) => {
   const Constructor = Vue.extend(Toast)

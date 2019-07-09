@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Actionsheet from './actionsheet.vue'
+import Actionsheet from './Actionsheet.vue'
 
 const install = (opts: {
 activeItem: object

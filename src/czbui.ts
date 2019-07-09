@@ -10,8 +10,9 @@ import WeuiSwitch from './components/switch'
 import CheckBox from './components/checkBox'
 import Toolbar from './components/toolbar'
 import InfiniteScroll from './components/infinitescroll'
+import Slider from './components/slider'
 
-const list = [Tab, WeuiSwitch, CheckBox, InfiniteScroll, Toolbar]
+const list = [Tab, WeuiSwitch, CheckBox, InfiniteScroll, Toolbar, Slider]
 
 const install = (Vue: any) => {
   list.map(component => {

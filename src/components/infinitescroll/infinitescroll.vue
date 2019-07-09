@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Loading from './loading'
+import Loading from './Loading'
 export default {
   name: 'InfiniteScroll',
   components: {

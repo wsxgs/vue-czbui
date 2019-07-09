@@ -1,8 +1,13 @@
 import Vue from 'vue'
-import Loading from './loading.vue'
+import Loading from './Loading.vue'
 
 const install = {
-  show (opts: { msg: string }) {
+  show (opts: any) {
+    if (!opts) {
+      opts = {
+        msg: ''
+      }
+    }
     const Constructor = Vue.extend(Loading)
     const Instance = new Constructor({
       data () {

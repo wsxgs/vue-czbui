@@ -1,2 +1,2 @@
-import InfiniteScroll from './infinitescroll.vue'
+import InfiniteScroll from './Infinitescroll.vue'
 export default InfiniteScroll
