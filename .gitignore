@@ -6,3 +6,4 @@ npm-debug.log
 /single.html
 .history
 dist/
+.eslintcache
