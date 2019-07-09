@@ -1,18 +1,27 @@
 import Vue from 'vue'
 import './style/weui.min.less'
 
-import Tab from './components/tab'
 import Toast from './components/toast'
 import Loading from './components/loading'
 import Dialog from './components/dialog'
 import Actionsheet from './components/actionsheet'
-import WeuiSwitch from './components/switch'
-import CheckBox from './components/checkBox'
 import Toolbar from './components/toolbar'
 import InfiniteScroll from './components/infinitescroll'
+import Tab from './components/tab'
 import Slider from './components/slider'
+import Search from './components/search'
+import CheckBox from './components/checkBox'
+import WeuiSwitch from './components/switch'
 
-const list = [Tab, WeuiSwitch, CheckBox, InfiniteScroll, Toolbar, Slider]
+const list = [
+  Tab,
+  InfiniteScroll,
+  Toolbar,
+  Slider,
+  Search,
+  CheckBox,
+  WeuiSwitch
+]
 
 const install = (Vue: any) => {
   list.map(component => {

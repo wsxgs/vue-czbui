@@ -46,6 +46,12 @@ const router = new VueRouter({
       path: '/slider',
       name: 'slider',
       component: () => import('./pages/Slider.vue')
+    },
+    // 搜索
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('./pages/Search.vue')
     }
   ],
   scrollBehavior (to, from, savedPosition) {

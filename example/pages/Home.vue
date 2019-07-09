@@ -37,9 +37,9 @@
         <div class="weui-cell__ft"></div>
       </router-link>
 
-      <router-link class="weui-cell weui-cell_access" to="/switch">
+      <router-link class="weui-cell weui-cell_access" to="/search">
         <div class="weui-cell__bd">
-          <p>开关</p>
+          <p>搜索</p>
         </div>
         <div class="weui-cell__ft"></div>
       </router-link>
@@ -47,6 +47,13 @@
       <router-link class="weui-cell weui-cell_access" to="/checkBox">
         <div class="weui-cell__bd">
           <p>复选框</p>
+        </div>
+        <div class="weui-cell__ft"></div>
+      </router-link>
+
+      <router-link class="weui-cell weui-cell_access" to="/switch">
+        <div class="weui-cell__bd">
+          <p>开关</p>
         </div>
         <div class="weui-cell__ft"></div>
       </router-link>
