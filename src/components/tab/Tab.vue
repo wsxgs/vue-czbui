@@ -39,7 +39,7 @@ export default {
     },
     // 高亮颜色
     activeColor: {
-      default: 'rgb(26, 173, 25);',
+      default: 'rgb(26, 173, 25)',
       type: String
     },
     // 当前选中index

@@ -57,7 +57,7 @@
 <script>
 // 测试
 export default {
-  name: 'index',
+  name: 'home',
   data () {
     return {
       isShowBackIcon: false

@@ -34,7 +34,7 @@
 <script>
 
 export default {
-  name: 'index',
+  name: 'dialog',
   data () {
     return {
     }

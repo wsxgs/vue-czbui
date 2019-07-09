@@ -1,5 +1,5 @@
 <template>
-  <div class="pagenation">
+  <div class="infinite-scroll">
     <InfiniteScroll
       ref="infiniteScroll"
       :isOpenPullDownRefresh="true"
@@ -8,7 +8,7 @@
     >
       <ul slot="content" class="group">
         <li v-for="item in list" :key="item.idd">
-          <img :src="item.img" alt>
+          <img :src="item.img" alt />
           <div class="content">
             <h3>我是标题</h3>
             <p>我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述</p>
@@ -22,7 +22,7 @@
 <script>
 import { listData } from './../const/index'
 export default {
-  name: 'test',
+  name: 'infinite-scroll',
   components: {
 
   },
