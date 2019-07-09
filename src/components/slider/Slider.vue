@@ -74,7 +74,7 @@ export default {
       this.isTouchMoveDisabled = true
       setTimeout(() => {
         this.isTouchMoveDisabled = false
-      }, 100)
+      }, 80)
     },
     /**
      * 触摸移动事件
@@ -92,17 +92,15 @@ export default {
       // 计算当前滑块值
       this.sliderValue = Math.round(this.currentSliderWidth / this.sliderWidth * 100)
 
-      this.$nextTick(() => {
-        // 设置滑块位置及当前滑动距离
-        this.setSliderPosition()
-        this.touchStartPosition = this.touchMovePosition
-      })
+      // 设置滑块位置及当前滑动距离
+      this.setSliderPosition()
+      this.touchStartPosition = this.touchMovePosition
     },
     /**
      * 触摸结束事件
      */
     sliderTouchEnd (e) {
-
+      this.$emit('sliderMoved', this.sliderValue)
     },
     /**
      * 设置滑块位置及当前滑动距离

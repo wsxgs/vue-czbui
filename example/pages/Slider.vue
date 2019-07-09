@@ -7,10 +7,24 @@
     </Toolbar>
 
     <div class="section-body">
-      <Slider :defaultValue="80"></Slider>
+      <Slider :defaultValue="80" @sliderMoved="sliderMoved"></Slider>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'slider',
+  mounted () {
+
+  },
+  methods: {
+    sliderMoved (val) {
+      console.log('当前滑块值' + val)
+    }
+  }
+}
+</script>
 
 <style lang="less" scoped>
 .section-body {
