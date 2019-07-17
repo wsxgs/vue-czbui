@@ -21,7 +21,7 @@ let https = {
     return new Promise((resolve, reject) => {
       instance({
         method: 'GET',
-        url: url + '?' + handleOptions(opts)
+        url: url + handleOptions(opts)
       })
         .then((res: any) => {
           if (res.data.code === 200) {
@@ -88,10 +88,12 @@ function handleOptions (opts: any) {
 
   let arr = Object.keys(opts)
   let newArr = arr.map(item => {
-    return (item = `${item}=${opts[item]}`)
+    if (opts[item]) {
+      return (item = `${item}=${opts[item]}`)
+    }
   })
   let newOpts = newArr.join('&')
-  return newOpts || ''
+  return newOpts ? '?' + newOpts : ''
 }
 
 export default https

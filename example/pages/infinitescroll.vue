@@ -52,15 +52,12 @@ export default {
      * 获取列表数据
      */
     async getListData (type, page) {
-      let { code, msg } = await this.$http.get('/api', { page: page })
+      let { code } = await this.$http.get('/api', { page: page })
 
       let { list, total } = listData
 
       if (code !== 200) {
-        this.$toast.show({
-          type: 'error',
-          msg: msg
-        })
+        return
       }
       // 无数据
       if (total === 0) {
