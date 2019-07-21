@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'development') {
 // 使用由库提供的配置的默认值来创建实例
 var instance = axios.create({
   baseURL: baseURL,
-  timeout: 5000
+  timeout: 10000
 })
 
 let https = {
