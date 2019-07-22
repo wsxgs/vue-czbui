@@ -73,6 +73,7 @@ export default {
   },
   beforeDestroy () {
     this.screenEl.removeEventListener('scroll', this.throttledCheck)
+    document.body.style = ''
   },
   methods: {
     /**
@@ -90,7 +91,7 @@ export default {
         touchEndPoitionY = e.touches[0].pageY
         touchMoveLenght = touchEndPoitionY - touchStartPoitionY
         if (touchMoveLenght > 0) {
-          document.body.style.transform = `translateY(${touchMoveLenght}px)`
+          document.body.style.marginTop = `${touchMoveLenght}px`
           // 下拉高度大于dom高度
           if (touchMoveLenght > pullDownElHeight + 20) {
             this.pullDownText = '松开刷新'
@@ -101,11 +102,14 @@ export default {
       document.body.addEventListener('touchend', (e) => {
         touchEndPoitionY = e.changedTouches[0].pageY
         touchMoveLenght = touchEndPoitionY - touchStartPoitionY
+        if (touchMoveLenght <= 0) {
+          return
+        }
         // Y轴滑动距离大于 30 触发刷新事件
         if (touchMoveLenght > pullDownElHeight) {
           this.pullDownText = '重新加载中···'
           this.pullDownStatus = 2
-          document.body.style.transform = `translateY(${pullDownElHeight}px)`
+          document.body.style.marginTop = `${pullDownElHeight}px`
           this.loadTimes = 0
           this.ispullDown = true
           // 刷新
@@ -164,7 +168,7 @@ export default {
         this.pullDownText = '刷新成功'
         this.pullDownStatus = 3
         setTimeout(() => {
-          document.body.style.transform = `translateY(0px)`
+          document.body.style.marginTop = '0'
           this.pullDownText = '下拉刷新'
           this.pullDownStatus = 0
         }, 500)
