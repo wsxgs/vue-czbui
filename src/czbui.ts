@@ -6,23 +6,25 @@ import Loading from './components/loading'
 import Dialog from './components/dialog'
 import Actionsheet from './components/actionsheet'
 import Toolbar from './components/toolbar'
-import InfiniteScroll from './components/infinitescroll'
+import Infinitescroll from './components/infinitescroll'
+import PullDown from './components/pullDown'
 import Tab from './components/tab'
 import Slider from './components/slider'
 import Search from './components/search'
-import CheckBox from './components/checkBox'
-import WeuiSwitch from './components/switch'
-import loadingPro from './components/loadingPro'
+import Checkbox from './components/checkbox'
+import Weuiswitch from './components/switch'
+import Loadingpro from './components/loadingpro'
 
 const list = [
   Tab,
-  InfiniteScroll,
+  Infinitescroll,
+  PullDown,
   Toolbar,
   Slider,
   Search,
-  CheckBox,
-  WeuiSwitch,
-  loadingPro
+  Checkbox,
+  Weuiswitch,
+  Loadingpro
 ]
 
 const install = (Vue: any) => {

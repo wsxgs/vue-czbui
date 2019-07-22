@@ -1,3 +1,3 @@
-import LoadingPro from './loadingPro.vue'
+import LoadingPro from './LoadingPro.vue'
 
 export default LoadingPro
