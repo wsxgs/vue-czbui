@@ -4,10 +4,10 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    isShowLoading: true
+    isShowLoading: false
   },
   mutations: {
-    toggleLoaingStatus (state: any, val: boolean) {
+    toggleLoaingStatus (state, val) {
       // mutate state
       state.isShowLoading = val
     }

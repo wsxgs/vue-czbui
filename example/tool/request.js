@@ -2,8 +2,9 @@ import axios from 'axios'
 import qs from 'qs'
 import Toast from 'vue-czbui/dist/components/toast/index.js'
 import Dialog from 'vue-czbui/dist/components/dialog/index.js'
+import store from '../vuex'
 
-let baseURL: string = ''
+let baseURL = ''
 if (process.env.NODE_ENV === 'development') {
   baseURL = '/'
 } else {
@@ -16,14 +17,40 @@ var instance = axios.create({
   timeout: 10000
 })
 
+// 添加请求拦截器
+instance.interceptors.request.use(
+  function (config) {
+    // 在发送请求之前做些什么
+    return config
+  },
+  function (error) {
+    // 对请求错误做些什么
+    return Promise.reject(error)
+  }
+)
+
+// 添加响应拦截器
+instance.interceptors.response.use(
+  function (response) {
+    // 对响应数据做点什么
+    return response
+  },
+  function (error) {
+    // 对响应错误做点什么
+    // 隐藏加载中
+    store.commit('toggleLoaingStatus', false)
+    return Promise.reject(error)
+  }
+)
+
 let https = {
-  get (url: string, opts = {}) {
+  get (url, opts = {}) {
     return new Promise((resolve, reject) => {
       instance({
         method: 'GET',
         url: url + handleOptions(opts)
       })
-        .then((res: any) => {
+        .then(res => {
           if (res.data.code === 200) {
             resolve(res.data)
           } else {
@@ -46,7 +73,7 @@ let https = {
         })
     })
   },
-  post (url: string, opts = {}) {
+  post (url, opts = {}) {
     return new Promise((resolve, reject) => {
       instance({
         method: 'POST',
@@ -56,7 +83,7 @@ let https = {
           contentType: 'application/x-www-form-urlencoded'
         }
       })
-        .then((res: any) => {
+        .then(res => {
           if (res.data.code === 200) {
             resolve(res.data)
           } else {
@@ -81,7 +108,7 @@ let https = {
   }
 }
 
-function handleOptions (opts: any) {
+function handleOptions (opts) {
   if (typeof opts !== 'object') {
     return ''
   }

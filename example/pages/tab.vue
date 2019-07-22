@@ -72,9 +72,8 @@ export default {
      */
     async getData () {
       let { code, msg } = await this.$http.get('/api', { id: this.activeTab.id })
-      // 关闭loading
+      // 隐藏加载中
       this.$store.commit('toggleLoaingStatus', false)
-
       if (code !== 200) {
         this.$toast.show({
           type: 'error',

@@ -11,7 +11,13 @@ const router = new VueRouter({
       name: 'home',
       component: Home
     },
-    // 上拉加载、下拉刷新
+    // 下拉刷新
+    {
+      path: '/pulldown',
+      name: 'pulldown',
+      component: () => import('./pages/PullDown.vue')
+    },
+    // 上拉加载
     {
       path: '/infinitescroll',
       name: 'infinitescroll',

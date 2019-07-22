@@ -1,11 +1,11 @@
 <template>
-  <div class="infinite-scroll page">
+  <div class="pull-down page">
     <!-- 导航条 -->
     <Toolbar>
-      <span slot="title">上拉加载</span>
+      <span slot="title">下拉刷新</span>
       <a href slot="right"></a>
     </Toolbar>
-    <InfiniteScroll ref="infiniteScroll" @pullUpLoad="pullUpLoad">
+    <PullDown ref="pullDownRefresh" @pullDownRefresh="pullDownRefresh">
       <div slot="content">
         <ul class="group">
           <li v-for="item in list" :key="item.idd">
@@ -17,7 +17,7 @@
           </li>
         </ul>
       </div>
-    </InfiniteScroll>
+    </PullDown>
   </div>
 </template>
 
@@ -36,11 +36,14 @@ export default {
       pageIndex: 1
     }
   },
+  created () {
+    this.getListData(this.pageIndex)
+  },
   methods: {
     /**
      * 上拉加载
      */
-    pullUpLoad () {
+    pullDownRefresh () {
       this.getListData(this.pageIndex)
     },
     /**
@@ -53,24 +56,12 @@ export default {
       if (code !== 200) {
         return
       }
-      let { list, total } = listData
-      // 无数据
-      if (total === 0) {
-        this.$refs.infiniteScroll.finished()
-      }
 
-      if (page === 1) {
-        this.list = list
-      } else {
-        this.list = [...this.list, ...list]
-      }
+      let { list } = listData
 
-      if (this.list.length === total) {
-        // 数据全部加载完毕
-        this.$refs.infiniteScroll.finished()
-      } else {
-        this.$refs.infiniteScroll.loaded()
-        this.pageIndex++
+      this.list = list
+      if (this.$refs.pullDownRefresh) {
+        this.$refs.pullDownRefresh.loaded()
       }
     }
   }

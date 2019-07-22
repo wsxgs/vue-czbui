@@ -41,7 +41,7 @@ export default {
   },
   mounted () {
     setTimeout(() => {
-      // 关闭loading
+      // 隐藏加载中
       this.$store.commit('toggleLoaingStatus', false)
     }, 500)
   },

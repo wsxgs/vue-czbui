@@ -16,9 +16,16 @@
         <div class="weui-cell__ft"></div>
       </router-link>
 
+      <router-link class="weui-cell weui-cell_access" to="/pulldown">
+        <div class="weui-cell__bd">
+          <p>下拉刷新</p>
+        </div>
+        <div class="weui-cell__ft"></div>
+      </router-link>
+
       <router-link class="weui-cell weui-cell_access" to="/infinitescroll">
         <div class="weui-cell__bd">
-          <p>列表下拉刷新/上拉加载</p>
+          <p>列表上拉加载</p>
         </div>
         <div class="weui-cell__ft"></div>
       </router-link>
@@ -72,7 +79,7 @@ export default {
   },
   mounted () {
     setTimeout(() => {
-      // 关闭loading
+      // 隐藏加载中
       this.$store.commit('toggleLoaingStatus', false)
     }, 500)
   },
