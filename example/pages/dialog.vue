@@ -1,5 +1,5 @@
 <template>
-  <div class="dialog">
+  <div class="dialog page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">操作反馈</span>
@@ -39,10 +39,11 @@ export default {
     return {
     }
   },
-  mounted: function () {
-    this.$nextTick(() => {
-
-    })
+  mounted () {
+    setTimeout(() => {
+      // 关闭loading
+      this.$store.commit('toggleLoaingStatus', false)
+    }, 500)
   },
   methods: {
     /**
@@ -134,9 +135,6 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='less' scoped>
-.page {
-  padding-top: 26px;
-}
 .button-sp-area {
   margin: 15px;
 }

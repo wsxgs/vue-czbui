@@ -1,5 +1,5 @@
 <template>
-  <div class="slider">
+  <div class="slider page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">滑块</span>
@@ -16,7 +16,10 @@
 export default {
   name: 'slider',
   mounted () {
-
+    setTimeout(() => {
+      // 关闭loading
+      this.$store.commit('toggleLoaingStatus', false)
+    }, 500)
   },
   methods: {
     sliderMoved (val) {

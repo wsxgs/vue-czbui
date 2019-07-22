@@ -1,20 +1,27 @@
 <template>
-  <div class="infinite-scroll">
+  <div class="infinite-scroll page">
+    <!-- 导航条 -->
+    <Toolbar>
+      <span slot="title">列表下拉刷新/上拉加载</span>
+      <a href slot="right"></a>
+    </Toolbar>
     <InfiniteScroll
       ref="infiniteScroll"
       :isOpenPullDownRefresh="true"
       @pullDownRefresh="pullDownRefresh"
       @pullUpLoad="pullUpLoad"
     >
-      <ul slot="content" class="group">
-        <li v-for="item in list" :key="item.idd">
-          <img :src="item.img" alt />
-          <div class="content">
-            <h3>我是标题</h3>
-            <p>我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述</p>
-          </div>
-        </li>
-      </ul>
+      <div slot="content">
+        <ul class="group">
+          <li v-for="item in list" :key="item.idd">
+            <img :src="item.img" alt />
+            <div class="content">
+              <h3>我是标题</h3>
+              <p>我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述我是描述</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </InfiniteScroll>
   </div>
 </template>
@@ -53,6 +60,8 @@ export default {
      */
     async getListData (type, page) {
       let { code } = await this.$http.get('/api', { page: page })
+      // 关闭loading
+      this.$store.commit('toggleLoaingStatus', false)
 
       let { list, total } = listData
 

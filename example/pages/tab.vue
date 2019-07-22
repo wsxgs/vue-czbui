@@ -1,6 +1,6 @@
 
 <template>
-  <div class="tab">
+  <div class="tab page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">tab切换</span>
@@ -46,10 +46,16 @@ export default {
       // 选中tab index
       activeTabIndex: 0,
       // 选中tab
-      activeTab: null,
+      activeTab: {
+        id: 1,
+        label: '选项一'
+      },
       // 内容
       content: '我是选项一对应的内容'
     }
+  },
+  mounted () {
+    this.getData()
   },
   methods: {
     /**
@@ -66,6 +72,9 @@ export default {
      */
     async getData () {
       let { code, msg } = await this.$http.get('/api', { id: this.activeTab.id })
+      // 关闭loading
+      this.$store.commit('toggleLoaingStatus', false)
+
       if (code !== 200) {
         this.$toast.show({
           type: 'error',

@@ -1,6 +1,6 @@
 
 <template>
-  <div class="checkbox">
+  <div class="checkbox page">
     <Toolbar>
       <span slot="title">复选框</span>
       <a href slot="right"></a>
@@ -43,6 +43,12 @@ export default {
       // 复选框选中列表
       checkValueList: []
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      // 关闭loading
+      this.$store.commit('toggleLoaingStatus', false)
+    }, 500)
   },
   methods: {
 

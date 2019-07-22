@@ -1,6 +1,6 @@
 
 <template>
-  <div class="switch">
+  <div class="switch page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">开关</span>
@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'switch',
+  name: 'mySwitch',
   components: {
 
   },
@@ -31,6 +31,12 @@ export default {
       // 开关状态
       switchStatus: false
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      // 关闭loading
+      this.$store.commit('toggleLoaingStatus', false)
+    }, 500)
   },
   methods: {
     /**

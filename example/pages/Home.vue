@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="index page">
     <!-- 导航条 -->
     <Toolbar :isShowBackIcon="isShowBackIcon">
       <span slot="title">首页</span>
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-// 测试
+import { setTimeout } from 'timers'
 export default {
   name: 'home',
   data () {
@@ -70,10 +70,15 @@ export default {
       isShowBackIcon: false
     }
   },
-  mounted: function () {
-    this.$nextTick(() => { })
+  mounted () {
+    setTimeout(() => {
+      // 关闭loading
+      this.$store.commit('toggleLoaingStatus', false)
+    }, 500)
   },
-  methods: {}
+  methods: {
+
+  }
 }
 </script>
 

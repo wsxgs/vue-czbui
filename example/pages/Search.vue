@@ -1,5 +1,5 @@
 <template>
-  <div class="search">
+  <div class="search page">
     <Search @fillSearchValue="fillSearchValue"></Search>
   </div>
 </template>
@@ -11,6 +11,12 @@ export default {
     fillSearchValue (searchValue) {
       console.log(searchValue)
     }
+  },
+  mounted () {
+    setTimeout(() => {
+      // 关闭loading
+      this.$store.commit('toggleLoaingStatus', false)
+    }, 500)
   }
 }
 </script>
