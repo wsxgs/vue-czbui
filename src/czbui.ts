@@ -12,6 +12,7 @@ import Slider from './components/slider'
 import Search from './components/search'
 import CheckBox from './components/checkBox'
 import WeuiSwitch from './components/switch'
+import loadingPro from './components/loadingPro'
 
 const list = [
   Tab,
@@ -20,7 +21,8 @@ const list = [
   Slider,
   Search,
   CheckBox,
-  WeuiSwitch
+  WeuiSwitch,
+  loadingPro
 ]
 
 const install = (Vue: any) => {
