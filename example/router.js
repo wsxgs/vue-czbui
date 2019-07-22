@@ -60,7 +60,7 @@ const router = new VueRouter({
       component: () => import('./pages/Search.vue')
     }
   ],
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 }
   }
 })

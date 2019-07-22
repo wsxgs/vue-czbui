@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./base.conf')
+const copyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
@@ -15,7 +16,7 @@ module.exports = merge(baseWebpackConfig, {
   mode: 'development',
   devtool: 'cheap-module-eval-source-map',
   entry: {
-    main: './example/main.ts',
+    main: './example/main.js',
     vendor: ['vue', 'vue-router', 'axios']
   },
   output: {
@@ -80,13 +81,14 @@ module.exports = merge(baseWebpackConfig, {
   optimization: {
     splitChunks: {
       chunks: 'all',
+      minSize: 30000,
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10
         },
         default: {
-          minChunks: 2,
+          minChunks: 1,
           priority: -20,
           reuseExistingChunk: true
         }
@@ -99,6 +101,12 @@ module.exports = merge(baseWebpackConfig, {
   plugins: [
     new CleanWebpackPlugin(),
     new webpack.HashedModuleIdsPlugin(),
+    new copyWebpackPlugin([
+      {
+        from: path.resolve(__dirname + './../static'), // 打包的静态资源目录地址
+        to: 'static' // 打包到dist下面的static
+      }
+    ]),
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
@@ -106,7 +114,9 @@ module.exports = merge(baseWebpackConfig, {
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
         messages: [
-          `Your application is running here: http://${config.host}:${config.port}`
+          `Your application is running here: http://${config.host}:${
+            config.port
+          }`
         ],
         notes: ['pass Ctrl+ C stop serve']
       },
