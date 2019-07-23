@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { setTimeout } from 'timers'
 export default {
   name: 'PullDown',
   components: {
@@ -32,10 +33,12 @@ export default {
     }
   },
   created () {
-
+    setTimeout(() => {
+      this.init()
+    }, 300)
   },
   mounted () {
-    this.init()
+
   },
   methods: {
     /**
@@ -44,9 +47,9 @@ export default {
     init () {
       let screen = document.getElementById('pullDown')
       let screenContent = document.getElementById('pullDownContent')
+      this.screenEl = screenContent
       let windowHeight = window.innerHeight
       let screenOffsetTop = screen.offsetTop
-      this.screenEl = screenContent
       screen.style.height = `${windowHeight - screenOffsetTop}px`
       this.listenTouchEvent()
     },
@@ -54,17 +57,22 @@ export default {
      * 监听触摸事件
      */
     listenTouchEvent () {
+      let screen = document.getElementById('pullDown')
+
       let touchStartPoitionY = 0 // 触摸开始Y轴位置位置
       let touchEndPoitionY = 0 // 触摸结束Y轴位置
       let touchMoveLenght = 0 // 活动距离
       let pullDownElHeight = document.querySelector('.pull-down-refresh').clientHeight // 下拉刷新DOM高度
-      this.screenEl.addEventListener('touchstart', (e) => {
+      screen.addEventListener('touchstart', (e) => {
         touchStartPoitionY = e.touches[0].pageY
       })
-      this.screenEl.addEventListener('touchmove', (e) => {
+      screen.addEventListener('touchmove', (e) => {
+        let screenBoxScrollTop = screen.scrollTop
         touchEndPoitionY = e.touches[0].pageY
         touchMoveLenght = touchEndPoitionY - touchStartPoitionY
-        if (touchMoveLenght > 0) {
+        if (touchMoveLenght > 0 && screenBoxScrollTop === 0) {
+          event.preventDefault()
+          event.stopPropagation()
           this.ispullDown = false
           this.screenEl.style.transform = `translateY(${touchMoveLenght}px)`
           // 下拉高度大于dom高度
@@ -74,16 +82,17 @@ export default {
           }
         }
       })
-      this.screenEl.addEventListener('touchend', (e) => {
+      screen.addEventListener('touchend', (e) => {
+        let screenBoxScrollTop = screen.scrollTop
         this.ispullDown = true
         touchEndPoitionY = e.changedTouches[0].pageY
         touchMoveLenght = touchEndPoitionY - touchStartPoitionY
 
-        // Y轴滑动距离大于 30 触发刷新事件
-        if (touchMoveLenght >= pullDownElHeight) {
+        // Y轴滑动距离大于 40 触发刷新事件
+        if (touchMoveLenght > pullDownElHeight && screenBoxScrollTop === 0) {
           this.pullDownText = '重新加载中···'
           this.pullDownStatus = 2
-          this.screenEl.transform = `translateY(${pullDownElHeight}px)`
+          this.screenEl.style.transform = `translateY(${pullDownElHeight}px)`
           this.loadTimes = 0
           // 刷新
           this.$emit('pullDownRefresh')
@@ -101,12 +110,11 @@ export default {
       this.pullDownText = '刷新成功'
       this.pullDownStatus = 3
 
-      this.screenEl.style.transform = 'translateY(0)'
-
       setTimeout(() => {
+        this.screenEl.style.transform = 'translateY(0)'
         this.pullDownText = '下拉刷新'
         this.pullDownStatus = 0
-      }, 300)
+      }, 500)
     }
     /**
      * 没有数据
