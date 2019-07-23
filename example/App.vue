@@ -11,6 +11,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import VConsole from 'vconsole'
 export default {
   name: 'app',
   computed: {
@@ -19,6 +20,7 @@ export default {
     })
   },
   mounted () {
+    window.vconsole = new VConsole()
   }
 }
 </script>
