@@ -5,9 +5,9 @@ import store from './vuex'
 
 import App from './app.vue'
 
-// import CZBUI from '../src/czbui'
-import CZBUI from 'vue-czbui'
-import 'vue-czbui/dist/czbui.css'
+import CZBUI from '../src/czbui'
+// import CZBUI from 'vue-czbui'
+// import 'vue-czbui/dist/czbui.css'
 import { _throttle, _debounce } from './tool/tool'
 
 // 全局方法挂载

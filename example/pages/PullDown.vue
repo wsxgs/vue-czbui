@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     /**
-     * 上拉加载
+     * 下拉刷新
      */
     pullDownRefresh () {
       this.getListData(this.pageIndex)

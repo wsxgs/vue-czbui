@@ -23,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="weui-actionsheet__action" v-on:click="sureCheck">
+      <div class="weui-actionsheet__action" @click="sureCheck">
         <div class="weui-actionsheet__cell">确定</div>
       </div>
     </div>

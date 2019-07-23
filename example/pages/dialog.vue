@@ -7,26 +7,22 @@
     </Toolbar>
 
     <div class="button-sp-area">
-      <button type="button" class="weui-btn weui-btn_default" v-on:click="showLoading">显示Loading</button>
+      <button type="button" class="weui-btn weui-btn_default" @click="showLoading">显示Loading</button>
 
       <button
         type="button"
         class="weui-btn weui-btn_primary"
-        v-on:click="showToastSuccess"
+        @click="showToastSuccess"
       >显示Toast(success)</button>
-      <button type="button" class="weui-btn weui-btn_warn" v-on:click="showToastWarn">显示Toast(error)</button>
+      <button type="button" class="weui-btn weui-btn_warn" @click="showToastWarn">显示Toast(error)</button>
     </div>
 
     <div class="button-sp-area">
-      <button type="button" class="weui-btn weui-btn_default" v-on:click="showAlert">alert</button>
-      <button type="button" class="weui-btn weui-btn_default" v-on:click="showConfim">confim</button>
+      <button type="button" class="weui-btn weui-btn_default" @click="showAlert">alert</button>
+      <button type="button" class="weui-btn weui-btn_default" @click="showConfim">confim</button>
     </div>
     <div class="button-sp-area">
-      <button
-        type="button"
-        class="weui-btn weui-btn_default"
-        v-on:click="showActionSheet"
-      >ActionSheet</button>
+      <button type="button" class="weui-btn weui-btn_default" @click="showActionSheet">ActionSheet</button>
     </div>
   </div>
 </template>
