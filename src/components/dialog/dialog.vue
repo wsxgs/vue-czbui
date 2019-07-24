@@ -77,6 +77,7 @@ export default {
   transform: translate(-50%, -60%) scale(0.5);
   opacity: 0;
   transition: 0.3s;
+  border-radius: 7px;
 }
 .on .weui-dialog {
   opacity: 1;
@@ -85,22 +86,15 @@ export default {
 .weui-dialog__hd {
   padding: 26px 20px 10px;
   font-size: 0;
-
-  .weui-dialog__title {
-    font-size: 17px;
-  }
 }
 .weui-dialog__bd {
   min-height: 36px;
   padding: 0 20px 20px;
   &:first-child {
-    font-size: 16px;
-    padding: 36px 20px 30px 20px;
+    font-size: 18px;
+    padding: 40px 20px 34px 20px;
     color: #353535;
   }
-}
-.weui-dialog__btn {
-  font-size: 16px;
 }
 .weui-dialog__btn:active {
   background-color: #fff;
