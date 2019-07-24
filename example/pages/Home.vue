@@ -1,5 +1,5 @@
 <template>
-  <div class="index page">
+  <div class="home page">
     <!-- 导航条 -->
     <Toolbar :isShowBackIcon="isShowBackIcon">
       <span slot="title">首页</span>
@@ -91,16 +91,24 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='less' scoped>
-.logo {
-  padding: 30px 15px;
-  text-align: center;
-}
-.logo img {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-}
-.weui-cell__bd {
-  text-align: left;
+.home {
+  .weui-cells {
+    color: #333;
+  }
+
+  .logo {
+    padding: 30px 15px;
+    text-align: center;
+
+    img {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  .weui-cell__bd {
+    text-align: left;
+  }
 }
 </style>

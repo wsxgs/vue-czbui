@@ -78,7 +78,7 @@ let https = {
       instance({
         method: 'POST',
         url: url,
-        data: qs.stingfy(opts),
+        data: qs.stringify(opts),
         headers: {
           contentType: 'application/x-www-form-urlencoded'
         }
