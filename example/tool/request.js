@@ -114,9 +114,11 @@ function handleOptions (opts) {
   }
 
   let arr = Object.keys(opts)
-  let newArr = arr.map(item => {
+  let newArr = []
+  arr.forEach((item, index) => {
+    let newItem = null
     if (opts[item]) {
-      return (item = `${item}=${opts[item]}`)
+      newArr.push(`${item}=${opts[item]}`)
     }
   })
   let newOpts = newArr.join('&')
