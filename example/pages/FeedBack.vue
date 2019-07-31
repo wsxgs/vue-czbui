@@ -30,7 +30,7 @@
 <script>
 
 export default {
-  name: 'dialogs',
+  name: 'feedback',
   data () {
     return {
     }

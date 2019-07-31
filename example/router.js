@@ -31,9 +31,9 @@ const router = new VueRouter({
     },
     // 操作反馈  toast  loading  dialog
     {
-      path: '/dialog',
-      name: 'dialog',
-      component: () => import('./pages/Dialog.vue')
+      path: '/feedback',
+      name: 'feedback',
+      component: () => import('./pages/FeedBack.vue')
     },
     // 开关
     {

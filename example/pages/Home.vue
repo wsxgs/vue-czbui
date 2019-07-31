@@ -9,7 +9,7 @@
       <img src="./../assets/logo.png" alt />
     </div>
     <div class="weui-cells">
-      <router-link class="weui-cell weui-cell_access" to="/dialog">
+      <router-link class="weui-cell weui-cell_access" to="/feedback">
         <div class="weui-cell__bd">
           <p>操作反馈</p>
         </div>
