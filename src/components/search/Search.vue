@@ -33,13 +33,14 @@
 </template>
 
 <script>
-import { _debounce } from '../../../example/tool/tool'
+import { clearTimeout, setTimeout } from 'timers'
 export default {
   name: 'Search',
   data () {
     return {
       searchValue: '', // 搜索框值
-      isFocusing: false // 输入框是否聚焦
+      isFocusing: false, // 输入框是否聚焦
+      timer: null
     }
   },
   methods: {
@@ -71,7 +72,10 @@ export default {
      */
     fillSearchValue () {
       // 防抖
-      _debounce(this.transmitSearchValue, 500)
+      clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        this.transmitSearchValue()
+      }, 500)
     },
     /**
      * 传递搜索值给父组件 通过fillSearchValue方法
