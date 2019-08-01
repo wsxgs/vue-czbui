@@ -9,22 +9,22 @@ import Toolbar from './components/toolbar'
 import Infinitescroll from './components/infinitescroll'
 import PullDown from './components/pullDown'
 import Tab from './components/tab'
+import Popup from './components/popup'
 import Slider from './components/slider'
 import Search from './components/search'
 import Checkbox from './components/checkbox'
 import Weuiswitch from './components/switch'
-import Loadingpro from './components/loadingpro'
 
 const list = [
   Tab,
   Infinitescroll,
   PullDown,
   Toolbar,
+  Popup,
   Slider,
   Search,
   Checkbox,
-  Weuiswitch,
-  Loadingpro
+  Weuiswitch
 ]
 
 const install = (Vue: any) => {

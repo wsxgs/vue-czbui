@@ -1,7 +1,7 @@
 {
   "name": "vue-czbui",
   "description": "A mobile components Library with Vue2.js.",
-  "version": "2.2.4",
+  "version": "2.2.6",
   "license": "MIT",
   "slideEffects": [
     "*.css",
