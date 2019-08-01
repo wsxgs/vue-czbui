@@ -1,6 +1,6 @@
 
 <template>
-  <div class="checkbox page">
+  <div class="checkbox-page page">
     <Toolbar>
       <span slot="title">复选框</span>
       <a href slot="right"></a>

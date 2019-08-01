@@ -1,5 +1,5 @@
 <template>
-  <div class="infinite-scroll page">
+  <div class="infinite-scroll-page page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">上拉加载</span>

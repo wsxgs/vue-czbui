@@ -1,5 +1,5 @@
 <template>
-  <div class="pull-down page">
+  <div class="pull-down-page page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">下拉刷新</span>

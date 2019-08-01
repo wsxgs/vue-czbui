@@ -1,7 +1,7 @@
 <template>
   <section class="app">
     <transition name="fade">
-      <LoadingPro v-show="isShowLoading"></LoadingPro>
+      <Loading v-show="isShowLoading"></Loading>
     </transition>
     <transition name="fade">
       <router-view></router-view>
@@ -12,8 +12,12 @@
 <script>
 import { mapState } from 'vuex'
 import VConsole from 'vconsole'
+import Loading from './component/loading'
 export default {
   name: 'app',
+  components: {
+    Loading
+  },
   computed: {
     ...mapState({
       isShowLoading: state => state.isShowLoading

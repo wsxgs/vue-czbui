@@ -1,5 +1,5 @@
 <template>
-  <div class="search page">
+  <div class="search-page page">
     <Search @fillSearchValue="fillSearchValue"></Search>
   </div>
 </template>

@@ -1,6 +1,6 @@
 
 <template>
-  <div class="tab page">
+  <div class="tab-page page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">tab切换</span>

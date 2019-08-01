@@ -1,5 +1,5 @@
 <template>
-  <div class="home page">
+  <div class="home-page page">
     <!-- 导航条 -->
     <Toolbar :isShowBackIcon="isShowBackIcon">
       <span slot="title">首页</span>
@@ -33,6 +33,13 @@
       <router-link class="weui-cell weui-cell_access" to="/tab">
         <div class="weui-cell__bd">
           <p>选项卡</p>
+        </div>
+        <div class="weui-cell__ft"></div>
+      </router-link>
+
+      <router-link class="weui-cell weui-cell_access" to="/popup">
+        <div class="weui-cell__bd">
+          <p>模态框</p>
         </div>
         <div class="weui-cell__ft"></div>
       </router-link>
@@ -91,7 +98,7 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='less' scoped>
-.home {
+.home-page {
   .weui-cells {
     color: #333;
   }

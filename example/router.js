@@ -23,17 +23,23 @@ const router = new VueRouter({
       name: 'infinitescroll',
       component: () => import('./pages/InfiniteScroll.vue')
     },
+    // 操作反馈  toast  loading  dialog
+    {
+      path: '/feedback',
+      name: 'feedback',
+      component: () => import('./pages/FeedBack.vue')
+    },
     // 选项卡
     {
       path: '/tab',
       name: 'tab',
       component: () => import('./pages/Tab.vue')
     },
-    // 操作反馈  toast  loading  dialog
+    // 模态框
     {
-      path: '/feedback',
-      name: 'feedback',
-      component: () => import('./pages/FeedBack.vue')
+      path: '/popup',
+      name: 'popup',
+      component: () => import('./pages/Popup.vue')
     },
     // 开关
     {

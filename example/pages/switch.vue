@@ -1,6 +1,6 @@
 
 <template>
-  <div class="switch page">
+  <div class="switch-page page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">开关</span>

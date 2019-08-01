@@ -1,5 +1,5 @@
 <template>
-  <div class="dialog page">
+  <div class="feed-back-page page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">操作反馈</span>

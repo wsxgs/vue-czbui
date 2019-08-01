@@ -1,5 +1,5 @@
 <template>
-  <div class="slider page">
+  <div class="slider-page page">
     <!-- 导航条 -->
     <Toolbar>
       <span slot="title">滑块</span>
