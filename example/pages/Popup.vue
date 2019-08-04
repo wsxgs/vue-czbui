@@ -7,7 +7,7 @@
     </Toolbar>
 
     <div class="button-sp-area">
-      <button type="button" class="weui-btn weui-btn_default" @click="showPopup()">显示Loading</button>
+      <button type="button" class="weui-btn weui-btn_default" @click="showPopup()">显示弹窗</button>
     </div>
     <Popup
       :isShowPopup="isShowPopup"
@@ -73,6 +73,6 @@ export default {
 
 <style lang='less' scoped>
 .button-sp-area {
-  margin: 15px;
+  padding: 15px;
 }
 </style>

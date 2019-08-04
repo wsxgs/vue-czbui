@@ -132,6 +132,6 @@ export default {
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style lang='less' scoped>
 .button-sp-area {
-  margin: 15px;
+  padding: 15px;
 }
 </style>

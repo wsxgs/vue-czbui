@@ -99,7 +99,7 @@ export default {
 .content {
   background: #fff;
   margin-top: 10px;
-  height: calc(100vh - 86px);
+  height: calc(100vh - 106px);
   padding: 15px;
 }
 </style>
