@@ -53,7 +53,9 @@ export default {
 </script>
 <style lang='less' scoped>
 .toolbar-wrap {
+  position: relative;
   height: 46px;
+  z-index: 9999;
 }
 
 .toolbar {
