@@ -10,6 +10,8 @@ import CZBUI from '../src/czbui'
 // import 'vue-czbui/dist/czbui.css'
 import { _throttle, _debounce } from './tool/tool'
 
+import './service-worker'
+
 // 全局方法挂载
 Vue.prototype.$http = http
 window._throttle = _throttle

@@ -5,6 +5,7 @@ const baseWebpackConfig = require('./base.conf')
 const copyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const workboxPlugin = require('workbox-webpack-plugin')
 
 const config = {
   host: 'localhost',
@@ -93,6 +94,10 @@ module.exports = merge(baseWebpackConfig, {
     ]),
     new HtmlWebpackPlugin({
       template: 'index.html'
+    }),
+    new workboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
     }),
     new webpack.HotModuleReplacementPlugin(), // 热更新插件
     new FriendlyErrorsWebpackPlugin({
