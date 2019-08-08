@@ -106,7 +106,6 @@ export default {
      */
     loaded () {
       // 下拉刷新
-      this.screenEl.addEventListener('scroll', this.throttledCheck)
       this.pullDownText = '刷新成功'
       this.pullDownStatus = 3
 
@@ -116,9 +115,6 @@ export default {
         this.pullDownStatus = 0
       }, 500)
     }
-    /**
-     * 没有数据
-     */
 
   }
 }
