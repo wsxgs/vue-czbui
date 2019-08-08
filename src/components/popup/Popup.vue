@@ -10,7 +10,7 @@
           <slot name="content"></slot>
         </div>
         <div class="popup-footer" v-if="position === 'center'">
-          <button type="button" @click="closePopup()">{{btnText}}</button>
+          <div class="button" type="button" @click="closePopup()">{{btnText}}</div>
         </div>
       </div>
     </transition>
@@ -134,7 +134,7 @@ export default {
     .popup-footer {
       border-top: 1px solid #eee;
 
-      button {
+      .button {
         display: block;
         width: 100%;
         text-align: center;
