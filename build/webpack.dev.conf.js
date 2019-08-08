@@ -14,6 +14,7 @@ const config = {
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
+  devtool: 'cheap-module-eval-source-map',
   entry: {
     main: './example/main.js',
     vendors: ['vue', 'vue-router']
@@ -21,7 +22,7 @@ module.exports = merge(baseWebpackConfig, {
   output: {
     path: path.join(__dirname, './../dist'),
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name][hash].js'
   },
   devServer: {
     contentBase: path.resolve(__dirname, './../example'),
@@ -45,7 +46,12 @@ module.exports = merge(baseWebpackConfig, {
         test: /\.less$/,
         use: [
           'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 2 } },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
           'postcss-loader',
           {
             loader: 'less-loader' // compiles Less to CSS
@@ -56,7 +62,12 @@ module.exports = merge(baseWebpackConfig, {
         test: /\.css$/,
         use: [
           'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 2 } },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
           {
             loader: 'postcss-loader',
             options: {
@@ -97,7 +108,18 @@ module.exports = merge(baseWebpackConfig, {
     }),
     new workboxPlugin.GenerateSW({
       clientsClaim: true,
-      skipWaiting: true
+      skipWaiting: true,
+      runtimeCaching: [
+        // 配置路由请求缓存
+        {
+          urlPattern: /.*\.js/, // 匹配文件
+          handler: 'NetworkFirst' // 网络优先
+        },
+        {
+          urlPattern: /\/api/, // 匹配文件
+          handler: 'NetworkFirst' // 网络优先
+        }
+      ]
     }),
     new webpack.HotModuleReplacementPlugin(), // 热更新插件
     new FriendlyErrorsWebpackPlugin({
