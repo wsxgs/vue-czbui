@@ -71,16 +71,10 @@ export default {
      * 获取数据
      */
     async getData () {
-      let { code, msg } = await this.$http.get('/api', { id: this.activeTab.id })
+      await this.$http.get('/api', { id: this.activeTab.id })
       // 隐藏加载中
       this.$store.commit('toggleLoaingStatus', false)
-      if (code !== 200) {
-        this.$toast.show({
-          type: 'error',
-          msg: msg
-        })
-        return
-      }
+
       if (this.activeTab.id === 1) {
         this.content = '我是选项一对应的内容'
       } else if (this.activeTab.id === 2) {

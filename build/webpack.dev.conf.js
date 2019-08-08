@@ -8,8 +8,8 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const workboxPlugin = require('workbox-webpack-plugin')
 
 const config = {
-  host: 'localhost',
-  port: 9000
+  host: '0.0.0.0',
+  port: 9006
 }
 
 module.exports = merge(baseWebpackConfig, {
@@ -100,7 +100,7 @@ module.exports = merge(baseWebpackConfig, {
     new copyWebpackPlugin([
       {
         from: path.resolve(__dirname + './../static'), // 打包的静态资源目录地址
-        to: 'static' // 打包到dist下面的static
+        to: '' // 打包到dist下面的static
       }
     ]),
     new HtmlWebpackPlugin({
