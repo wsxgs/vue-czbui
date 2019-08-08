@@ -47,12 +47,10 @@ export default {
      * 获取列表数据
      */
     async getListData (page) {
-      let { code } = await this.$http.get('/api', { page: page })
+      await this.$http.get('/api', { page: page })
       // 隐藏加载中
       this.$store.commit('toggleLoaingStatus', false)
-      if (code !== 200) {
-        return
-      }
+
       let { list, total } = listData
       // 无数据
       if (total === 0) {

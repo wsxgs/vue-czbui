@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import router from './router'
-import http from './tool/request'
+import request from './tool/request'
 import store from './vuex'
 
 import App from './app.vue'
@@ -13,7 +13,7 @@ import { _throttle, _debounce } from './tool/tool'
 import './service-worker'
 
 // 全局方法挂载
-Vue.prototype.$http = http
+Vue.prototype.$http = request
 window._throttle = _throttle
 window._debounce = _debounce
 

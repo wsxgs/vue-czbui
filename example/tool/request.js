@@ -6,59 +6,29 @@ import store from '../vuex'
 
 let baseURL = ''
 if (process.env.NODE_ENV === 'development') {
-  baseURL = '/'
+  baseURL = window.location.origin
 } else {
   baseURL = '/'
 }
 
-// 使用由库提供的配置的默认值来创建实例
-var instance = axios.create({
-  baseURL: baseURL,
-  timeout: 10000
-})
-
-// 添加请求拦截器
-instance.interceptors.request.use(
-  function (config) {
-    // 在发送请求之前做些什么
-    return config
-  },
-  function (error) {
-    // 对请求错误做些什么
-    return Promise.reject(error)
-  }
-)
-
-// 添加响应拦截器
-instance.interceptors.response.use(
-  function (response) {
-    // 对响应数据做点什么
-    return response
-  },
-  function (error) {
-    // 对响应错误做点什么
-    // 隐藏加载中
-    store.commit('toggleLoaingStatus', false)
-    return Promise.reject(error)
-  }
-)
-
-let https = {
-  get (url, opts = {}) {
-    return new Promise((resolve, reject) => {
-      instance({
+const request = {
+  get (url, params) {
+    new Promise((resolve, reject) => {
+      fetch(baseURL + url + handleOptions(params), {
         method: 'GET',
-        url: url + handleOptions(opts)
+        credentials: 'include', // include, same-origin, *omit
+        mode: 'cors', // no-cors, cors, *same-origin
+        redirect: 'follow' // manual, *follow, error
       })
-        .then(res => {
-          if (res.data.code === 200) {
-            resolve(res.data)
+        .then(async res => {
+          let data = await res.json()
+          if (data.code === 200) {
+            resolve(data)
           } else {
-            reject(res.data)
+            reject(data)
             Toast({
-              type: 'error',
-              msg: res.message,
-              timeout: '1500'
+              msg: data.msg,
+              type: error
             })
           }
         })
@@ -66,32 +36,29 @@ let https = {
           console.log(e)
           Dialog({
             title: '系统提示',
-            msg: '网络错误，请稍后再试',
-            isShowCancel: true,
-            confirmSure: function () {}
+            msg: '网络错误，请稍后再试'
           })
         })
     })
   },
-  post (url, opts = {}) {
-    return new Promise((resolve, reject) => {
-      instance({
-        method: 'POST',
-        url: url,
-        data: qs.stringify(opts),
-        headers: {
-          contentType: 'application/x-www-form-urlencoded'
-        }
+  post (url, params) {
+    new Promise((resolve, reject) => {
+      fetch(baseURL + url, {
+        method: 'GET',
+        body: params,
+        credentials: 'include', // include, same-origin, *omit
+        mode: 'cors', // no-cors, cors, *same-origin
+        redirect: 'follow' // manual, *follow, error
       })
-        .then(res => {
-          if (res.data.code === 200) {
-            resolve(res.data)
+        .then(async res => {
+          let data = await res.json()
+          if (data.code === 200) {
+            resolve(data)
           } else {
-            reject(res.data)
+            reject(data)
             Toast({
-              type: 'error',
-              msg: res.message,
-              timeout: '1500'
+              msg: data.msg,
+              type: error
             })
           }
         })
@@ -99,9 +66,7 @@ let https = {
           console.log(e)
           Dialog({
             title: '系统提示',
-            msg: '网络错误，请稍后再试',
-            isShowCancel: true,
-            confirmSure: function () {}
+            msg: '网络错误，请稍后再试'
           })
         })
     })
@@ -124,4 +89,4 @@ function handleOptions (opts) {
   return newOpts ? '?' + newOpts : ''
 }
 
-export default https
+export default request
