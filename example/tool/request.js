@@ -1,34 +1,37 @@
 import axios from 'axios'
 import qs from 'qs'
-import Toast from 'vue-czbui/dist/components/toast/index.js'
-import Dialog from 'vue-czbui/dist/components/dialog/index.js'
-import store from '../vuex'
+import Toast from 'vue-czbui/dist/components/toast/index'
+import Dialog from 'vue-czbui/dist/components/dialog/index'
 
 let baseURL = ''
+
 if (process.env.NODE_ENV === 'development') {
-  baseURL = window.location.origin
+  baseURL = '/'
 } else {
   baseURL = '/'
 }
+// 使用由库提供的配置的默认值来创建实例
+var instance = axios.create({
+  baseURL: baseURL,
+  timeout: 5000
+})
 
-const request = {
-  get (url, params) {
-    new Promise((resolve, reject) => {
-      fetch(baseURL + url + handleOptions(params), {
+let https = {
+  get (url, opts = {}) {
+    return new Promise((resolve, reject) => {
+      instance({
         method: 'GET',
-        credentials: 'include', // include, same-origin, *omit
-        mode: 'cors', // no-cors, cors, *same-origin
-        redirect: 'follow' // manual, *follow, error
+        url: url + '?' + handleOptions(opts)
       })
-        .then(async res => {
-          let data = await res.json()
-          if (data.code === 200) {
-            resolve(data)
+        .then(res => {
+          if (res.data.code === 200) {
+            resolve(res.data)
           } else {
-            reject(data)
-            Toast({
-              msg: data.msg,
-              type: error
+            reject(res.data)
+            Toast.show({
+              type: 'error',
+              msg: res.message,
+              timeout: '1500'
             })
           }
         })
@@ -36,29 +39,32 @@ const request = {
           console.log(e)
           Dialog({
             title: '系统提示',
-            msg: '网络错误，请稍后再试'
+            msg: '网络错误，请稍后再试',
+            isShowCancel: true,
+            confirmSure: function () {}
           })
         })
     })
   },
-  post (url, params) {
-    new Promise((resolve, reject) => {
-      fetch(baseURL + url, {
-        method: 'GET',
-        body: params,
-        credentials: 'include', // include, same-origin, *omit
-        mode: 'cors', // no-cors, cors, *same-origin
-        redirect: 'follow' // manual, *follow, error
+  post (url, opts = {}) {
+    return new Promise((resolve, reject) => {
+      instance({
+        method: 'POST',
+        url: url,
+        data: qs.stingfy(opts),
+        headers: {
+          contentType: 'application/x-www-form-urlencoded'
+        }
       })
-        .then(async res => {
-          let data = await res.json()
-          if (data.code === 200) {
-            resolve(data)
+        .then(res => {
+          if (res.data.code === 200) {
+            resolve(res.data)
           } else {
-            reject(data)
-            Toast({
-              msg: data.msg,
-              type: error
+            reject(res.data)
+            Toast.show({
+              type: 'error',
+              msg: res.message,
+              timeout: '1500'
             })
           }
         })
@@ -66,7 +72,9 @@ const request = {
           console.log(e)
           Dialog({
             title: '系统提示',
-            msg: '网络错误，请稍后再试'
+            msg: '网络错误，请稍后再试',
+            isShowCancel: true,
+            confirmSure: function () {}
           })
         })
     })
@@ -79,14 +87,11 @@ function handleOptions (opts) {
   }
 
   let arr = Object.keys(opts)
-  let newArr = []
-  arr.forEach((item, index) => {
-    if (opts[item] !== '' && opts[item] !== null && opts[item] !== undefined) {
-      newArr.push(`${item}=${opts[item]}`)
-    }
+  let newArr = arr.map(item => {
+    return (item = `${item}=${opts[item]}`)
   })
   let newOpts = newArr.join('&')
-  return newOpts ? '?' + newOpts : ''
+  return newOpts || ''
 }
 
-export default request
+export default https

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import router from './router'
-import request from './tool/request'
+import https from './tool/request'
 import store from './vuex'
 
 import App from './app.vue'
