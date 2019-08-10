@@ -1,16 +1,16 @@
-const path = require('path')
-const webpack = require('webpack')
-const merge = require('webpack-merge')
-const baseWebpackConfig = require('./base.conf')
-const copyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
-const workboxPlugin = require('workbox-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const baseWebpackConfig = require('./base.conf');
+const copyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const workboxPlugin = require('workbox-webpack-plugin');
 
 const config = {
   host: '0.0.0.0',
   port: 9006
-}
+};
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
@@ -107,12 +107,10 @@ module.exports = merge(baseWebpackConfig, {
       template: 'index.html'
     }),
     new workboxPlugin.GenerateSW({
-      cacheId: 'webpack-pwa', // 设置前缀
+      // cacheId: 'webpack-pwa', // 设置前缀
       skipWaiting: true, // 强制等待中的 Service Worker 被激活
       clientsClaim: true, // Service Worker 被激活后使其立即获得页面控制权
       swDest: 'service-wroker.js', // 输出 Service worker 文件
-      globPatterns: ['**/*.{html,js,css,png.jpg}'], // 匹配的文件
-      globIgnores: ['service-wroker.js'], // 忽略的文件
       runtimeCaching: [
         // 配置路由请求缓存
         {
@@ -137,18 +135,18 @@ module.exports = merge(baseWebpackConfig, {
       },
       onErrors: (severity, errors) => {
         if (severity !== 'error') {
-          return
+          return;
         }
-        console.log(errors[0])
-        const error = errors[0]
+        console.log(errors[0]);
+        const error = errors[0];
         notifier.notify({
           title: 'Webpack error',
           message: severity + ': ' + error.name,
           subtitle: error.file || '',
           icon: ICON
-        })
+        });
       },
       clearConsole: true
     })
   ]
-})
+});
