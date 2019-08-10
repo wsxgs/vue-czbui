@@ -13,7 +13,7 @@ import { _throttle, _debounce } from './tool/tool'
 import './service-worker'
 
 // 全局方法挂载
-Vue.prototype.$http = request
+Vue.prototype.$http = https
 window._throttle = _throttle
 window._debounce = _debounce
 
