@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./base.conf');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
@@ -21,7 +22,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   output: {
     path: path.join(__dirname, './../dist'),
-    publicPath: '/',
+    publicPath: '.',
     filename: '[name][hash].js'
   },
   devServer: {
@@ -97,6 +98,7 @@ module.exports = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new copyWebpackPlugin([
       {
         from: path.resolve(__dirname + './../static'), // 打包的静态资源目录地址
