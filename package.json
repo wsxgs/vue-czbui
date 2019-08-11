@@ -87,6 +87,7 @@
     "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {
+    "caniuse-lite": "^1.0.30000989",
     "mini-css-extract-plugin": "^0.7.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "vconsole": "^3.3.2"
