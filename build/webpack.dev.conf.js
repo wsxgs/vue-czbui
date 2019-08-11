@@ -1,17 +1,17 @@
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const baseWebpackConfig = require('./base.conf');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const copyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const workboxPlugin = require('workbox-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+const baseWebpackConfig = require('./base.conf')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const copyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const workboxPlugin = require('workbox-webpack-plugin')
 
 const config = {
   host: '0.0.0.0',
   port: 9006
-};
+}
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'development',
@@ -22,7 +22,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   output: {
     path: path.join(__dirname, './../dist'),
-    publicPath: '.',
+    publicPath: '/',
     filename: '[name][hash].js'
   },
   devServer: {
@@ -137,18 +137,18 @@ module.exports = merge(baseWebpackConfig, {
       },
       onErrors: (severity, errors) => {
         if (severity !== 'error') {
-          return;
+          return
         }
-        console.log(errors[0]);
-        const error = errors[0];
+        console.log(errors[0])
+        const error = errors[0]
         notifier.notify({
           title: 'Webpack error',
           message: severity + ': ' + error.name,
           subtitle: error.file || '',
           icon: ICON
-        });
+        })
       },
       clearConsole: true
     })
   ]
-});
+})
