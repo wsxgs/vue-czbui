@@ -8186,7 +8186,7 @@ vm-browserify@^1.0.1:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/vm-browserify/download/vm-browserify-1.1.0.tgz#bd76d6a23323e2ca8ffa12028dc04559c75f9019"
 
-vue-czbui@^2.2.9:
+vue-czbui@^2.2.8:
   version "2.2.8"
   resolved "https://registry.npm.taobao.org/vue-czbui/download/vue-czbui-2.2.8.tgz#5a5e9a6737353050cf3a29cf7f416f920aab9dce"
   dependencies:
