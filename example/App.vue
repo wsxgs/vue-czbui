@@ -13,6 +13,7 @@
 import { mapState } from 'vuex'
 import VConsole from 'vconsole'
 import Loading from './component/loading'
+import { checkIsMobile } from './tool/validate'
 export default {
   name: 'app',
   components: {
@@ -24,7 +25,10 @@ export default {
     })
   },
   mounted () {
-    window.vconsole = new VConsole()
+    let env = process.env.NODE_ENV
+    if (checkIsMobile() && env === 'development') {
+      window.vconsole = new VConsole()
+    }
   }
 }
 </script>
