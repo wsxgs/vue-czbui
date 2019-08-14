@@ -3,23 +3,31 @@
  * @param {Function} func
  * @param {Number} wait
  */
-export function _throttle (func, wait) {
-  if (window.$disabled) {
-    return
+function throttle () {
+  let disabled = true
+  return (func, wait) => {
+    if (!disabled) {
+      return
+    }
+    func()
+    disabled = false
+    setTimeout(() => {
+      disabled = true
+    }, wait)
   }
-  func()
-  window.$disabled = true
-  setTimeout(() => {
-    window.$disabled = false
-  }, wait)
 }
+export const _throttle = throttle()
 
 /**
  * 防抖函数
  * @param {Function} func
  * @param {Number} wait
  */
-export function _debounce (func, wait) {
-  clearTimeout(window.$timer)
-  window.$timer = setTimeout(func, wait)
+function debounce () {
+  let timer = null
+  return (func, wait) => {
+    clearTimeout(timer)
+    timer = setTimeout(func, wait)
+  }
 }
+export const _debounce = debounce()
