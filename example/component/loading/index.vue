@@ -25,7 +25,7 @@ export default {
   line-height: 1;
   font-size: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 9999;
+  z-index: 999;
 
   span {
     display: inline-block;

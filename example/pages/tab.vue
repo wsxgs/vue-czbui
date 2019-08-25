@@ -71,7 +71,9 @@ export default {
      * 获取数据
      */
     async getData () {
-      await this.$http.get('/api', { id: this.activeTab.id })
+      await this.$http.get('/api', { params: {
+        id: this.activeTab.id
+      } })
       // 隐藏加载中
       this.$store.commit('toggleLoaingStatus', false)
 

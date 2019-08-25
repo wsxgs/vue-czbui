@@ -95,6 +95,9 @@ module.exports = merge(baseWebpackConfig, {
           reuseExistingChunk: true
         }
       }
+    },
+    runtimeChunk: {
+      name: entrypoint => `manifest.${entrypoint.name}`
     }
   },
   plugins: [

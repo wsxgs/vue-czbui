@@ -47,7 +47,11 @@ export default {
      * 获取列表数据
      */
     async getListData (page) {
-      await this.$http.get('/api', { page: page })
+      await this.$http.get('/api', {
+        params: {
+          page: page
+        }
+      })
       // 隐藏加载中
       this.$store.commit('toggleLoaingStatus', false)
 
