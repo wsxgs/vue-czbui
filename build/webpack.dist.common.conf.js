@@ -4,7 +4,7 @@ const merge = require('webpack-merge')
 const baseWebpackConfig = require('./base.conf')
 const pkg = require('../package.json')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = merge(baseWebpackConfig, {
   mode: 'production',

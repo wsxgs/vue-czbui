@@ -12,7 +12,7 @@ app.get('/api', function (req, res) {
 })
 
 var server = app.listen(9999, function () {
-  var host = server.address().address
+  // var host = server.address().address;
   var port = server.address().port
 
   console.log('Your server is running here: http://localhost:' + port)

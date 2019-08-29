@@ -3,16 +3,23 @@ module.exports = {
     browser: true,
     es6: true
   },
-  extends: 'standard',
+  extends: [
+    'plugin:vue/essential',
+    'standard'
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'
   },
-  parser: 'vue-eslint-parser',
   parserOptions: {
+    parser: 'babel-eslint',
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  plugins: ['vue'],
-  rules: {}
+  plugins: [
+    'vue'
+  ],
+  rules: {
+    semi: ["error", "never"]
+  }
 }

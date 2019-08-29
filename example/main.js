@@ -8,7 +8,10 @@ import App from './app.vue'
 import CZBUI from '../src/czbui'
 // import CZBUI from 'vue-czbui'
 // import 'vue-czbui/dist/czbui.css'
-import { _throttle, _debounce } from './tool/tool'
+import {
+  _throttle,
+  _debounce
+} from './tool/tool'
 
 import './service-worker'
 
@@ -27,7 +30,7 @@ router.beforeEach((to, from, next) => {
 })
 
 new Vue({
-  router: router,
+  router,
   store,
-  render: v => v(App)
+  render: (v) => v(App)
 }).$mount('#app')
